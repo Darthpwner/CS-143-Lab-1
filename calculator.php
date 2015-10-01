@@ -20,6 +20,7 @@ function removeExtraSpaces($input) {
    return $input;
 }
 
+// test
 function errorChecker($input) {
     $pattern = '[0-9-+/*.]';   //Regex to detect legal characters
     

@@ -23,7 +23,8 @@ function removeExtraSpaces($input) {
 function errorChecker($input) {
     //$pattern = "/[0-9-+/*.]/";   //Regex to detect legal characters
     
-     $pattern = "/\d+/";
+     $pattern = "/[0-9]/";
+
 
 /*    if(preg_match($pattern, $input) == 0) {
 	echo $pattern;

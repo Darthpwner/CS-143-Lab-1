@@ -9,7 +9,13 @@
 <?php
 
 $input = $_GET["expr"];
-eval("\$output \ $input[0] ;");
+eval("\$output = $input;");
+
+if (is_numeric($output))
+   echo "".$input." = ".$output."<br/>";
+else
+   echo "Invalid input expression! ".$input."<br/>";
+
 
 ?>
 

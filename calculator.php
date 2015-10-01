@@ -10,7 +10,7 @@
 
 function removeExtraSpaces($input) {
    for($i = 0; $i < strlen($input); $i++) {
-       if($input[$i] == ' ' && $input[$i + 1] == ' ') {   //Detected extra spaces
+       if($input[$i] == ' ' && $input[$i + 1] == ' ') {   //Detect extra spaces
            for($j = $i; $j < strlen($input); $j++) {
 	       $input[$j] = $input[$j + 1];  //Move everything back 1 character
    	   }
@@ -21,24 +21,31 @@ function removeExtraSpaces($input) {
 
 // test
 function errorChecker($input) {
-    $pattern = "/[0-9-+/*.]/";   //Regex to detect legal characters
+    //$pattern = "/[0-9-+/*.]/";   //Regex to detect legal characters
+    
+      $pattern = "/[0-9]/";
+      //$pattern = "/\d/"; //Detect numbers
 
-//    echo $pattern;
+/*    if(preg_match($pattern, $input) == 0) {
+	echo $pattern;
+	
+        echo $input; //BUG: Not showing up
+	
+        echo "Invalid Expression";
+        return false;
+    }*/
 
-//    if(preg_match($pattern, $input) == 0) {
-//        echo "Invalid Expression";
-//        return false;
-//    }
-
-    for($i = 0; $i < strlen($input); $i++) {
-        if(preg_match($pattern, $input[$i]) == 0) {
-	   echo "Invalid Expression!";
-	   return false;
-	}
-    }
+   for($i = 0; $i < strlen($input); $i++) {
+       if(preg_match($pattern, $input[$i]) == 0) {
+	        echo $pattern;
+           //echo $input[i];
+	        echo "Invalid Expression!";
+	        return false;
+       }
+   }
 
     echo "GOOD";
-    return true;	    
+    return;	    
 }
 
 function performCalculation($input) {
@@ -67,7 +74,7 @@ function performCalculation($input) {
 }
 
 $expr = $_GET["expr"];
-$temp = removeExtraSpaces($expr);
+$temp = removeExtraSpaces($expr); //good
 
 $x = errorChecker($temp);
 

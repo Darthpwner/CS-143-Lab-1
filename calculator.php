@@ -44,41 +44,39 @@ function errorChecker($input) {
        }
    }
 
-    echo "GOOD";
+    //echo "GOOD";
     return;	    
 }
 
 function performCalculation($input) {
     //Remove unnecessary spaces
     $cleanedInput = removeExtraSpaces($input);
-
+    echo $input;
     $performOperation = $cleanedInput;
-
+    echo $performOperation;
+    
     //Perform error checking
-    if(!errorChecker($performOperation)) {
-        return;
-    }
+    //if(!errorChecker($performOperation)) {
+    //    return;
+    //}
 
-    //Perform multiplication & division
-    for($i = 0; $i < strlen($performOperation); $i++) {
-        //TODO
-    }
+    //evaluate
+    eval("\$output = $performOperation;");
+    echo $output;
 
-    //Perform addition & subtraction
-    for($i = 0; $i < strlen($performOperation); $i++) {
-        //TODO
-    }
-
-    return $cleanedInput + " = " +  $performOperation;
+    return $cleanedInput + " = " +  $output;
 }
 
-$expr = $_GET["expr"];
-$temp = removeExtraSpaces($expr); //good
+$input = $_GET["expr"];
+$temp = removeExtraSpaces($input); //good
 
 $x = errorChecker($temp);
+$output = performCalculation($x);
 
 //echo $temp;
-echo $x;
+//echo $x;
+
+echo $output;
 
 ?>
 

@@ -1,0 +1,17 @@
+<html>
+<body>
+
+<form method = "GET">
+<input type = "text" name = "expr" />
+<input type = "submit" value = "Calculate" />
+</form>
+
+<?php
+
+$input = $_GET["expr"];
+eval("\$output \ $input[0] ;");
+
+?>
+
+</body>
+</html>

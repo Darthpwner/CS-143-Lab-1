@@ -51,23 +51,24 @@ function errorChecker($input) {
 function performCalculation($input) {
     //Remove unnecessary spaces
     $cleanedInput = removeExtraSpaces($input);
-
+    echo $input;
     $performOperation = $cleanedInput;
-
+    echo $performOperation;
+    
     //Perform error checking
-    if(!errorChecker($performOperation)) {
-        return;
-    }
+    //if(!errorChecker($performOperation)) {
+    //    return;
+    //}
 
     //evaluate
-    eval("\$performOperation = \"$performOperation\";");
-    //echo $performOperation. "\n";
+    eval("\$output = $performOperation;");
+    echo $output;
 
-    return $cleanedInput + " = " +  $performOperation;
+    return $cleanedInput + " = " +  $output;
 }
 
-$expr = $_GET["expr"];
-$temp = removeExtraSpaces($expr); //good
+$input = $_GET["expr"];
+$temp = removeExtraSpaces($input); //good
 
 $x = errorChecker($temp);
 $output = performCalculation($x);

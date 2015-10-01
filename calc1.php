@@ -9,7 +9,7 @@
 <?php
 
 function errorChecker($input) {
-   $pattern = "/(^$)|(\d+)|\+/"; //Handles empty string, any digit, and any space
+   $pattern = "/(^$)|(\d+)/"; //Handles empty string and spaces without digits
 
    if(preg_match($pattern, $input) == 0) {
        echo $input;

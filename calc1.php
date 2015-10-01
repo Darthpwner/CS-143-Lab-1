@@ -14,7 +14,7 @@ eval("\$output = $input;");
 if (is_numeric($output))
    echo "".$input." = ".$output."<br/>";
 else
-   echo "Invalid input expression! ".$input."<br/>";
+   echo "Invalid input expression! <br/>";
 
 
 ?>

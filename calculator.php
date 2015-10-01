@@ -10,10 +10,9 @@
 
 function removeExtraSpaces($input) {
    for($i = 0; $i < strlen($input); $i++) {
-       if($input[$i] == ' ' && $input[$i + 1]) {   //Detected extra spaces
+       if($input[$i] == ' ' && $input[$i + 1] == ' ') {   //Detected extra spaces
            for($j = $i; $j < strlen($input); $j++) {
 	       $input[$j] = $input[$j + 1];  //Move everything back 1 character
-	         
    	   }
        }
    }

@@ -8,13 +8,32 @@
 
 <?php
 
+function errorChecker($input) {
+   //$pattern = "/(^$)|\d\s/";
+   $pattern = "/^$/"; //Handles empty string
+
+   if(preg_match($pattern, $input) == 0) {
+       echo $input;
+       echo "Invalid Expression";
+       return false;
+   }
+
+   return;
+}
+
 $input = $_GET["expr"];
+
+//
+$x = errorChecker($input);
+echo $x;
+//
+
 eval("\$output = $input;");
 
 if (is_numeric($output))
    echo "".$input." = ".$output."<br/>";
-else
-   echo "Invalid input expression! ".$input."<br/>";
+//else
+//   echo "Invalid input expression! ".$input."<br/>";
 
 
 ?>

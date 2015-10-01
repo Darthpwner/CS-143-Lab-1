@@ -21,14 +21,23 @@ function removeExtraSpaces($input) {
 
 // test
 function errorChecker($input) {
-    $pattern = '[0-9-+/*.]';   //Regex to detect legal characters
-    
+    $pattern = "/[0-9-+/*.]/";   //Regex to detect legal characters
+
+//    echo $pattern;
+
+//    if(preg_match($pattern, $input) == 0) {
+//        echo "Invalid Expression";
+//        return false;
+//    }
+
     for($i = 0; $i < strlen($input); $i++) {
-        if(!preg_match($pattern, $input[$i])) {
+        if(preg_match($pattern, $input[$i]) == 0) {
 	   echo "Invalid Expression!";
 	   return false;
 	}
-    } 
+    }
+
+    echo "GOOD";
     return true;	    
 }
 
@@ -59,7 +68,10 @@ function performCalculation($input) {
 $expr = $_GET["expr"];
 $temp = removeExtraSpaces($expr);
 
-echo $temp;
+$x = errorChecker($temp);
+
+//echo $temp;
+echo $x;
 
 ?>
 

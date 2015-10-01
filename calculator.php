@@ -1,3 +1,5 @@
+<?php
+echo "Hello World"; 
 function removeExtraSpaces($input) {
    for($i = 0; $i < strlen($input); $i++) {
        if($input[$i] == ' ' && $input[$i + 1]) {   //Detected extra spaces
@@ -42,3 +44,7 @@ function performCalculation($input) {
 
     return $cleanedInput + " = " +  $performOperation;
 }
+
+echo "<input type='text'>";
+
+?>

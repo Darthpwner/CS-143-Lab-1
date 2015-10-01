@@ -43,7 +43,6 @@ function performCalculation($input) {
     if(!errorChecker($performOperation)) {
         return;
     }
-    return $performOperation;
 
     //Perform multiplication & division
     for($i = 0; $i < strlen($performOperation); $i++) {

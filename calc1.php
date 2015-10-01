@@ -18,8 +18,7 @@ Type an expression in the following box (e.g., 10.5+20*3/25).
 <?php
 
 function errorChecker($input) {
-   //$pattern = "/(^$)|\d\s/";
-   $pattern = "/^$/"; //Handles empty string
+   $pattern = "/(^$)|(\d+)/"; //Handles empty string and spaces without digits
 
    if(preg_match($pattern, $input) == 0) {
        //echo $input;

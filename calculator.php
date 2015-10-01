@@ -28,7 +28,7 @@ function errorChecker($input) {
 	   echo "Invalid Expression!";
 	   return false;
 	}
-    }
+    } 
     return true;	    
 }
 

@@ -23,20 +23,22 @@ function performCalculation($input) {
     //Remove unnecessary spaces
     $cleanedInput = removeExtraSpaces($input);
 
+    $performOperation = $cleanedInput;
+
     //Perform error checking
-    if(!errorChecker($cleanedInput)) {
+    if(!errorChecker($performOperation)) {
         return;
     }
 
     //Perform multiplication & division
-    for($i = 0; $i < strlen($cleanedInput); $i++) {
+    for($i = 0; $i < strlen($performOperation); $i++) {
         //TODO
     }
 
     //Perform addition & subtraction
-    for($i = 0; $i < strlen($cleanedInput); $i++) {
+    for($i = 0; $i < strlen($performOperation); $i++) {
         //TODO
     }
 
-    return $cleanedInput;
+    return $cleanedInput + " = " +  $performOperation;
 }

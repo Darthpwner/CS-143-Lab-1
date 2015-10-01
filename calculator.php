@@ -44,7 +44,7 @@ function errorChecker($input) {
        }
    }
 
-    echo "GOOD";
+    //echo "GOOD";
     return;	    
 }
 
@@ -59,15 +59,9 @@ function performCalculation($input) {
         return;
     }
 
-    //Perform multiplication & division
-    for($i = 0; $i < strlen($performOperation); $i++) {
-        //TODO
-    }
-
-    //Perform addition & subtraction
-    for($i = 0; $i < strlen($performOperation); $i++) {
-        //TODO
-    }
+    //evaluate
+    eval("\$performOperation = \"$performOperation\";");
+    //echo $performOperation. "\n";
 
     return $cleanedInput + " = " +  $performOperation;
 }
@@ -76,9 +70,12 @@ $expr = $_GET["expr"];
 $temp = removeExtraSpaces($expr); //good
 
 $x = errorChecker($temp);
+$output = performCalculation($x);
 
 //echo $temp;
-echo $x;
+//echo $x;
+
+echo $output;
 
 ?>
 

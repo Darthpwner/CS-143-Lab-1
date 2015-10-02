@@ -30,18 +30,21 @@ function errorChecker($input) {
 }
 
 $input = $_GET["expr"];
-
+$original = $input;
 //
 $x = errorChecker($input);
 //echo $x;
 //
 
+// replace -- with +
+$input = str_replace("--", "+", $input);
+
 eval("\$output = $input;");
 
 if (is_numeric($output))
-   echo "".$input." = ".$output."<br/>";
-else
-   echo "Invalid input expression! <br/>";
+   echo "".$original." = ".$output."<br/>";
+//else
+  // echo "Invalid input expression! <br/>";
 
 ?>
 

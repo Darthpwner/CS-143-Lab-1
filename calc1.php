@@ -33,7 +33,7 @@ $input = $_GET["expr"];
 
 //
 $x = errorChecker($input);
-//echo $x;
+echo $x;
 //
 
 eval("\$output = $input;");

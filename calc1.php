@@ -20,7 +20,7 @@ Type an expression in the following box (e.g., 10.5+20*3/25).
 function errorChecker($input) {
    $pattern = "/(^$)|(\d+)/"; //Handles empty string and spaces without digits
 
-   if(preg_match($pattern, $input) == 0) {
+   if(!preg_match($pattern, $input)) {
        echo $input;
        echo "Invalid Expression";
    }

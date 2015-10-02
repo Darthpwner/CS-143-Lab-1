@@ -1,82 +1,64 @@
 <html>
+<head> <title> Calculator </title></head>
+  
 <body>
 
-<form action = "calculator.php" method = "get">
-<input type='text' name = 'expr'>
-<input type = 'submit' value = 'Calculate'>
+<h1> Calculator </h1>
+By Kang (Frank) Chen & Matthew Lin <br/>
+Type an expression in the following box (e.g., 10.5+20*3/25).
+
+
+<p>
+<form method = "GET">
+<input type = "text" name = "expr" />
+<input type = "submit" value = "Calculate" />
 </form>
+</p>
 
 <?php
 
-function removeExtraSpaces($input) {
-   for($i = 0; $i < strlen($input); $i++) {
-       if($input[$i] == ' ' && $input[$i + 1] == ' ') {   //Detect extra spaces
-           for($j = $i; $j < strlen($input); $j++) {
-	       $input[$j] = $input[$j + 1];  //Move everything back 1 character
-   	   }
-       }
-   }
-   return $input;
-}
-
-// test
 function errorChecker($input) {
-    //$pattern = "/[0-9-+/*.]/";   //Regex to detect legal characters
-    
-     $pattern = "/[\d\+\-\*\/\. ]/";
-
-
-/*    if(preg_match($pattern, $input) == 0) {
-	echo $pattern;
-	
-        echo $input; //BUG: Not showing up
-	
-        echo "Invalid Expression";
-        return false;
-    }*/
-
-   for($i = 0; $i < strlen($input); $i++) {
-       if(preg_match($pattern, $input[$i]) == 0) {
-	        echo $pattern;
-           //echo $input[i];
-	        echo "Invalid Expression!";
-	        return false;
-       }
+   // replace -- with +
+   $input = str_replace("--", "+", $input);
+ 
+   $pattern1 = "/[^\d\+\-\*\/\.\ ]/"; //Handles empty string and spaces without digits
+   // removing unwanted characters
+   if(preg_match($pattern1, $input)) {
+       //echo $input;
+       echo "Invalid Expression!";
+       return;
    }
 
-    //echo "GOOD";
-    return;	    
-}
+   $pattern3 = "/(\b0\d)/"; //Handeling leading 0s
+  // removing leading zeros
+  if (preg_match($pattern3, $input)){
+       //echo "removed leading zeros bitch <br>"; 
+       echo "Invalid Expression: leading zero";
+       return;
+  }
 
-function performCalculation($input) {
-    //Remove unnecessary spaces
-    $cleanedInput = removeExtraSpaces($input);
-    echo $input;
-    $performOperation = $cleanedInput;
-    echo $performOperation;
-    
-    //Perform error checking
-    //if(!errorChecker($performOperation)) {
-    //    return;
-    //}
+  $pattern2 = "/\d\ *\/\ *0/"; //Handeling dividing by 0
+  // removing dividing by 0
+  if (preg_match($pattern2, $input)){
+       //echo $input;
+       echo "Division by zero error!";
+       return;
+  }
 
-    //evaluate
-    eval("\$output = $performOperation;");
-    echo $output;
-
-    return $cleanedInput + " = " +  $output;
+   eval("\$output = $input;");
+   return $output;
 }
 
 $input = $_GET["expr"];
-$temp = removeExtraSpaces($input); //good
+$original = $input;
+//
+$output = errorChecker($input);
+//
 
-$x = errorChecker($temp);
-$output = performCalculation($x);
-
-//echo $temp;
-//echo $x;
-
-echo $output;
+if (is_numeric($output))
+   echo "".$original." = ".$output."<br/>";
+//else
+  // echo "Invalid input expression! <br/>";
 
 ?>
 

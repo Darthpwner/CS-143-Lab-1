@@ -25,21 +25,24 @@ function errorChecker($input) {
    // removing unwanted characters
    if(preg_match($pattern1, $input)) {
        //echo $input;
-       echo "Invalid Expression";
+       echo "Invalid Expression!";
+       return;
    }
+
+   $pattern3 = "/(\b0\d)/"; //Handeling leading 0s
+  // removing leading zeros
+  if (preg_match($pattern3, $input)){
+       //echo "removed leading zeros bitch <br>"; 
+       echo "Invalid Expression: leading zero";
+       return;
+  }
 
   $pattern2 = "/\d\ *\/\ *0/"; //Handeling dividing by 0
   // removing dividing by 0
   if (preg_match($pattern2, $input)){
        //echo $input;
        echo "Division by zero error!";
-  }
-
-  $pattern3 = "/[^1-9]0\d/"; //Handeling leading 0s
-  // removing leading zeros
-  if (preg_match($pattern3, $input)){
-       echo "removed leading zeros bitch <br>"; 
-       echo "Invalid Expression";
+       return;
   }
 
    eval("\$output = $input;");

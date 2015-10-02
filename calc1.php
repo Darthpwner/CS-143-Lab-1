@@ -18,15 +18,30 @@ Type an expression in the following box (e.g., 10.5+20*3/25).
 <?php
 
 function errorChecker($input) {
-   $pattern = "/[^\d\+\-\*\/\.\ ]/"; //Handles empty string and spaces without digits
-
    // replace -- with +
    $input = str_replace("--", "+", $input);
-
-   if(preg_match($pattern, $input)) {
-       echo $input;
+ 
+   $pattern1 = "/[^\d\+\-\*\/\.\ ]/"; //Handles empty string and spaces without digits
+   // removing unwanted characters
+   if(preg_match($pattern1, $input)) {
+       //echo $input;
        echo "Invalid Expression";
    }
+
+  $pattern2 = "/\d\ *\/\ *0/"; //Handeling dividing by 0
+  // removing dividing by 0
+  if (preg_match($pattern2, $input)){
+       //echo $input;
+       echo "Division by zero error!";
+  }
+
+  $pattern3 = "/[^1-9]0\d/"; //Handeling leading 0s
+  // removing leading zeros
+  if (preg_match($pattern3, $input)){
+       echo "removed leading zeros bitch <br>"; 
+       echo "Invalid Expression";
+  }
+
    eval("\$output = $input;");
    return $output;
 }

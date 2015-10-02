@@ -37,7 +37,7 @@ function errorChecker($input) {
        return;
   }
 
-  $pattern2 = "/\d\ *\/\ *0/"; //Handeling dividing by 0
+  $pattern2 = "/\d\ *\/\ *0\^./"; //Handeling dividing by 0
   // removing dividing by 0
   if (preg_match($pattern2, $input)){
        //echo $input;

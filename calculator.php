@@ -21,7 +21,7 @@ function errorChecker($input) {
    // replace -- with +
    $input = str_replace("--", "+", $input);
  
-   $pattern1 = "/[^\d\+\-\*\/\.\ ]/"; //Handles empty string and spaces without digits
+   $pattern1 = "/[^\d\+\-\*\/\.\ ]/"; 
    // removing unwanted characters
    if(preg_match($pattern1, $input)) {
        //echo $input;
@@ -29,7 +29,7 @@ function errorChecker($input) {
        return;
    }
 
-  $pattern2 = "/(\b0\d)/"; //Handling leading 0s
+  $pattern2 = "/\b0\d/"; //Handling leading 0s
   // removing leading zeros
   if (preg_match($pattern2, $input)){
        echo "Invalid Expression: leading zero";
@@ -44,8 +44,8 @@ function errorChecker($input) {
   }
 
   //$pattern3 = "/\d\ *\/\ *0\^./"; //Handling dividing by 0
-  //$pattern3 = "/\d\ *\/\ *0/"; //Handling dividing by 0
-  $pattern3 = "/\d\ *\/\ *0[^.]/";
+  $pattern3 = "/\d\ *\/\ *0/"; //Handling dividing by 0
+  //$pattern3 = "/\/ *0[^.?0*]/";
 
   // removing dividing by 0
   if (preg_match($pattern3, $input)){

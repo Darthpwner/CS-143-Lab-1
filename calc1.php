@@ -23,17 +23,13 @@ function errorChecker($input) {
    if(preg_match($pattern, $input) == 0) {
        echo $input;
        echo "Invalid Expression";
-       return false;
    }
-
-   return;
 }
 
 $input = $_GET["expr"];
 
 //
-$x = errorChecker($input);
-echo $x;
+errorChecker($input);
 //
 
 eval("\$output = $input;");

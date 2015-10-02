@@ -29,17 +29,17 @@ function errorChecker($input) {
        return;
    }
 
-   $pattern3 = "/(\b0\d)/"; //Handeling leading 0s
+  $pattern2 = "/(\b0\d)/"; //Handling leading 0s
   // removing leading zeros
-  if (preg_match($pattern3, $input)){
-       //echo "removed leading zeros bitch <br>"; 
+  if (preg_match($pattern2, $input)){
        echo "Invalid Expression: leading zero";
        return;
   }
 
-  $pattern2 = "/\d\ *\/\ *0\^./"; //Handeling dividing by 0
+  //$pattern3 = "/\d\ *\/\ *0\^./"; //Handling dividing by 0
+  $pattern3 = "/\d\ *\/\ *0/"; //Handling dividing by 0
   // removing dividing by 0
-  if (preg_match($pattern2, $input)){
+  if (preg_match($pattern3, $input)){
        //echo $input;
        echo "Division by zero error!";
        return;

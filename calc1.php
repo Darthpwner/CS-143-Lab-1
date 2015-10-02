@@ -1,6 +1,6 @@
 <html>
 <head> <title> Calculator </title></head>
-
+  
 <body>
 
 <h1> Calculator </h1>
@@ -18,28 +18,24 @@ Type an expression in the following box (e.g., 10.5+20*3/25).
 <?php
 
 function errorChecker($input) {
-   $pattern = "/(^$)|(\d+)/"; //Handles empty string and spaces without digits
+   $pattern = "/[^\d\+\-\*\/\.\ ]/"; //Handles empty string and spaces without digits
 
-   if(preg_match($pattern, $input) == 0) {
-       //echo $input;
-       //echo "Invalid Expression";
-       return false;
+   // replace -- with +
+   $input = str_replace("--", "+", $input);
+
+   if(preg_match($pattern, $input)) {
+       echo $input;
+       echo "Invalid Expression";
    }
-
-   return;
+   eval("\$output = $input;");
+   return $output;
 }
 
 $input = $_GET["expr"];
 $original = $input;
 //
-$x = errorChecker($input);
-//echo $x;
+$output = errorChecker($input);
 //
-
-// replace -- with +
-$input = str_replace("--", "+", $input);
-
-eval("\$output = $input;");
 
 if (is_numeric($output))
    echo "".$original." = ".$output."<br/>";

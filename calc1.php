@@ -21,8 +21,8 @@ function errorChecker($input) {
    $pattern = "/(^$)|(\d+)/"; //Handles empty string and spaces without digits
 
    if(preg_match($pattern, $input) == 0) {
-       //echo $input;
-       //echo "Invalid Expression";
+       echo $input;
+       echo "Invalid Expression";
        return false;
    }
 
@@ -40,9 +40,6 @@ eval("\$output = $input;");
 
 if (is_numeric($output))
    echo "".$input." = ".$output."<br/>";
-else
-   echo "Invalid input expression! <br/>";
-
 ?>
 
 </body>

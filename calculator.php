@@ -36,8 +36,17 @@ function errorChecker($input) {
        return;
   }
 
+  $pattern4 = "/\d\.\d*\./"; //Handling multiple decimal points
+  // removing multiple decimal points
+  if(preg_match($pattern4, $input)) {
+     echo "Invalid Expression: multiple decimal points";
+     return;                                                  
+  }
+
   //$pattern3 = "/\d\ *\/\ *0\^./"; //Handling dividing by 0
-  $pattern3 = "/\d\ *\/\ *0/"; //Handling dividing by 0
+  //$pattern3 = "/\d\ *\/\ *0/"; //Handling dividing by 0
+  $pattern3 = "/\d\ *\/\ *0[^.]/";
+
   // removing dividing by 0
   if (preg_match($pattern3, $input)){
        //echo $input;

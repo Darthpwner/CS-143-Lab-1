@@ -7,7 +7,6 @@
 By Kang (Frank) Chen & Matthew Lin <br/>
 Type an expression in the following box (e.g., 10.5+20*3/25).
 
-
 <p>
 <form method = "GET">
 <input type = "text" name = "expr" />
@@ -74,15 +73,10 @@ function errorChecker($input) {
 
 $input = $_GET["expr"];
 $original = $input;
-//
 $output = errorChecker($input);
-//
 
 if (is_numeric($output))
    echo "".$original." = ".$output."<br/>";
-//else
-  // echo "Invalid input expression! <br/>";
-
 ?>
 
 </body>

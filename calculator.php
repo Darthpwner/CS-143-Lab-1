@@ -43,12 +43,12 @@ function errorChecker($input) {
      return;                                                  
   }
 
-  //$pattern3 = "/\d\ *\/\ *0\^./"; //Handling dividing by 0
+  $pattern3_1 = "/\d\ *\/\ *0.?[1-9+]/"; //Allows 0/[1-9+] division
   $pattern3 = "/\d\ *\/\ *0/"; //Handling dividing by 0
-  //$pattern3 = "/\/ *0[^.?0*]/";
 
-  // removing dividing by 0
-  if (preg_match($pattern3, $input)){
+  if (preg_match($pattern3_1, $input)) {
+      //Do nothing
+  } else if (preg_match($pattern3, $input)){ // removing dividing by 0
        //echo $input;
        echo "Division by zero error!";
        return;

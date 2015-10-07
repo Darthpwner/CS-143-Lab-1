@@ -29,28 +29,26 @@ function errorChecker($input) {
        return;
    }
 
-  $pattern2_1 = "/0\./"; //Allows 0. 
-  $pattern2 = "/0\d/"; //Handling leading 0s
-  if (preg_match($pattern2_1, $input)) {
-      //Do nothing
-  } else if (preg_match($pattern2, $input)){ // removing leading zeros
+  $pattern2 = "/\b0\d/"; //Handling leading 0s
+  // removing leading zeros
+  if (preg_match($pattern2, $input)){
        echo "Invalid Expression: leading zero";
        return;
   }
 
-  $pattern3 = "/\d\.\d*\./"; //Handling multiple decimal points
+  $pattern4 = "/\d\.\d*\./"; //Handling multiple decimal points
   // removing multiple decimal points
-  if(preg_match($pattern3, $input)) {
+  if(preg_match($pattern4, $input)) {
      echo "Invalid Expression: multiple decimal points";
      return;                                                  
   }
 
-  $pattern4_1 = "/\d\ *\/\ *0.?[1-9+]/"; //Allows 0/[1-9+] division
-  $pattern4 = "/\d\ *\/\ *0/"; //Handling dividing by 0
+  $pattern3_1 = "/\d\ *\/\ *0.?[1-9+]/"; //Allows 0/[1-9+] division
+  $pattern3 = "/\d\ *\/\ *0/"; //Handling dividing by 0
 
-  if (preg_match($pattern4_1, $input)) {
+  if (preg_match($pattern3_1, $input)) {
       //Do nothing
-  } else if (preg_match($pattern4, $input)){ // removing dividing by 0
+  } else if (preg_match($pattern3, $input)){ // removing dividing by 0
        //echo $input;
        echo "Division by zero error!";
        return;

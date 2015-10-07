@@ -40,6 +40,12 @@ function errorChecker($input) {
        return;
    }
 
+   $pattern0 = "/[\+\*\/]\ *[\+\*\/]/"; //Handles multiple operators without operands
+  if (preg_match($pattern0, $input)) {
+      echo "Invalid Expression: multiple operators without operands";
+      return;
+  }
+
   $pattern3_1 = "/0\./"; //Allows 0. 
   $pattern3 = "/\b0\d/"; //Handling leading 0s
   if (preg_match($pattern3_1, $input)) {

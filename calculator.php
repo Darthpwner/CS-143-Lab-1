@@ -45,7 +45,7 @@ function errorChecker($input) {
      return;                                                  
   }
 
-  $pattern4_1 = "/\d\ *\/\ *0.?[1-9+]/"; //Allows 0/[1-9+] division
+  $pattern4_1 = "/\d\ *\/\ *0.?0*[1-9+]/"; //Allows 0/[1-9+] division
   $pattern4 = "/\d\ *\/\ *0/"; //Handling dividing by 0
 
   if (preg_match($pattern4_1, $input)) {

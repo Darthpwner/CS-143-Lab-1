@@ -1,0 +1,1 @@
+For this project 1A, Frank and Matt divided up the project as follows: Frank worked on getting the form submission and php code setup, while Matt worked with the regex checker. Both Frank and Matt debugged the program and used version control to make sure they each got the most up to date program.

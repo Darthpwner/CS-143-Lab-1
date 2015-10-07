@@ -35,18 +35,11 @@ function errorChecker($input) {
        return;
    }
 
-/*
-   $pattern0 = "/^[\+\*\/]\ *\d/"; //Handles hanging operators at the beginning
-   if (preg_match($pattern0, $input)) {
-      echo "Invalid Expression: Hanging operator at beginning";
-      return;
-   }
-
    $pattern69 = "/\d\ *[\+\-\*\/]\ *$/"; //Handles hanging operators at the end
    if (preg_match($pattern69, $input)) {
        echo "Invalid Expression: hanging operator at end";
        return;
-   }*/
+   }
 
   $pattern2_1 = "/0\./"; //Allows 0. 
   $pattern2 = "/\b0\d/"; //Handling leading 0s

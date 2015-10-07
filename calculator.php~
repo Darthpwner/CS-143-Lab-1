@@ -30,7 +30,7 @@ function errorChecker($input) {
    }
 
   $pattern2_1 = "/0\./"; //Allows 0. 
-  $pattern2 = "/0\d/"; //Handling leading 0s
+  $pattern2 = "/\b0\d/"; //Handling leading 0s
   if (preg_match($pattern2_1, $input)) {
       //Do nothing
   } else if (preg_match($pattern2, $input)){ // removing leading zeros

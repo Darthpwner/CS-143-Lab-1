@@ -29,11 +29,24 @@ function errorChecker($input) {
        return;
    }
 
-  /*$pattern69 = "/\-\ *\-\ *\-/"; //Handles more than 3 minus signs
+  $pattern70_1 = "/^\ *[\+\-\*\/]\ *$/"; //Prevent single operators
+  if(preg_match($pattern70_1, $input)) {
+      echo "Invalid Expression: Single operator";
+      return;
+  }
+
+  $pattern71 = "/[\+\-\*\/]\ *[\+\*\/]/"; //Handles strange combinations of operators
+  if(preg_match($pattern71, $input)) {
+      echo "Invalid Expression: Strange combinations of operators";
+      return;
+  }
+
+//BUG
+  $pattern69 = "/-\ *-\ *-/"; //Handles more than 3 minus signs
   if (preg_match($pattern69, $input)) {
      echo "Invalid Expression: more than 3 minus signs";
      return;
-  }*/
+  }
 
    $pattern1 = "/^\ *[\+\*\/]\ *\d/";
    if(preg_match($pattern1, $input)) {
@@ -47,15 +60,11 @@ function errorChecker($input) {
        return;
    }
 
-//PATCH
    $pattern3 = "/[\+\*\/]\ *[\+\*\/]/"; //Handles multiple operators without operands
   if (preg_match($pattern3, $input)) {
       echo "Invalid Expression: multiple operators without operands";
       return;
   }
-
-  
-//
 
   $pattern4_1 = "/0\./"; //Allows 0. 
   $pattern4 = "/\b0\d/"; //Handling leading 0s

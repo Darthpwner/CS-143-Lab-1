@@ -20,13 +20,20 @@ function errorChecker($input) {
    // replace -- with +
    $input = str_replace("--", "+", $input);
  
-   $pattern0 = "/[^\d\+\-\*\/\.\ ]/"; 
+  
+    $pattern0 = "/[^\d\+\-\*\/\.\ ]/"; 
    // removing unwanted characters
    if(preg_match($pattern0, $input)) {
        //echo $input;
        echo "Invalid Expression!";
        return;
    }
+
+  /*$pattern69 = "/\-\ *\-\ *\-/"; //Handles more than 3 minus signs
+  if (preg_match($pattern69, $input)) {
+     echo "Invalid Expression: more than 3 minus signs";
+     return;
+  }*/
 
    $pattern1 = "/^\ *[\+\*\/]\ *\d/";
    if(preg_match($pattern1, $input)) {
@@ -41,41 +48,37 @@ function errorChecker($input) {
    }
 
 //PATCH
-   $pattern0 = "/[\+\*\/]\ *[\+\*\/]/"; //Handles multiple operators without operands
-  if (preg_match($pattern0, $input)) {
+   $pattern3 = "/[\+\*\/]\ *[\+\*\/]/"; //Handles multiple operators without operands
+  if (preg_match($pattern3, $input)) {
       echo "Invalid Expression: multiple operators without operands";
       return;
   }
 
-  $pattern69 = "/\-\ *\-\ *\-/"; //Handles more than 3 minus signs
-  if (preg_match($pattern69, $input)) {
-     echo "Invalid Expression: more than 3 minus signs";
-     return;
-  }
+  
 //
 
-  $pattern3_1 = "/0\./"; //Allows 0. 
-  $pattern3 = "/\b0\d/"; //Handling leading 0s
-  if (preg_match($pattern3_1, $input)) {
+  $pattern4_1 = "/0\./"; //Allows 0. 
+  $pattern4 = "/\b0\d/"; //Handling leading 0s
+  if (preg_match($pattern4_1, $input)) {
       //Do nothing
-  } else if (preg_match($pattern3, $input)){ // removing leading zeros
+  } else if (preg_match($pattern4, $input)){ // removing leading zeros
        echo "Invalid Expression: leading zero";
        return;
   }
 
-  $pattern4 = "/\d\.\d*\./"; //Handling multiple decimal points
+  $pattern5 = "/\d\.\d*\./"; //Handling multiple decimal points
   // removing multiple decimal points
-  if(preg_match($pattern4, $input)) {
+  if(preg_match($pattern5, $input)) {
      echo "Invalid Expression: multiple decimal points";
      return;                                                  
   }
 
-  $pattern5_1 = "/\d\ *\/\ *0.?0*[1-9+]/"; //Allows 0/[1-9+] division
-  $pattern5 = "/\d\ *\/\ *0/"; //Handling dividing by 0
+  $pattern6_1 = "/\d\ *\/\ *0.?0*[1-9+]/"; //Allows 0/[1-9+] division
+  $pattern6 = "/\d\ *\/\ *0/"; //Handling dividing by 0
 
-  if (preg_match($pattern5_1, $input)) {
+  if (preg_match($pattern6_1, $input)) {
       //Do nothing
-  } else if (preg_match($pattern5, $input)){ // removing dividing by 0
+  } else if (preg_match($pattern6, $input)){ // removing dividing by 0
        //echo $input;
        echo "Division by zero error!";
        return;

@@ -43,7 +43,8 @@ CREATE TABLE MovieGenre (
 CREATE TABLE MovieDirector (
 	mid INTEGER REFERENCES Movie(id),
 	did INTEGER REFERENCES Director(id),
-	PRIMARY KEY (mid),	/*Temporary and arbitrary*/
+	FOREIGN KEY (mid) REFERENCES Movie(id),
+	FOREIGN KEY (did) REFERENCES Director(id)
 	CHECK (mid > 0 AND mid <= MaxMovieID(id))
 ) ENGINE = InnoDB;
 

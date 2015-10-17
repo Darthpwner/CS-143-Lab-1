@@ -34,36 +34,38 @@ CREATE TABLE Director (
 
 #MovieGenres;
 CREATE TABLE MovieGenre (
-	mid INTEGER NOT NULL,
+	mid INTEGER REFERENCES Movie(id),
 	genre VARCHAR (20) NOT NULL,
-	UNIQUE(mid, genre),
+	/*UNIQUE(mid, genre),*/
 	FOREIGN KEY (mid) REFERENCES Movie(id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE MovieDirector (
-	mid INTEGER NOT NULL,
-	did INTEGER NOT NULL,
+	mid INTEGER REFERENCES Movie(id),
+	did INTEGER REFERENCES Director(id),
 	PRIMARY KEY (mid),	/*Temporary and arbitrary*/
 	CHECK (mid > 0 AND mid <= MaxMovieID(id))
 ) ENGINE = InnoDB;
 
 CREATE TABLE MovieActor (
-	mid INTEGER NOT NULL,
-	aid INTEGER NOT NULL,
+	mid INTEGER REFERENCES Movie(id),
+	aid INTEGER REFERENCES Actor(id),
 	role VARCHAR(50) NOT NULL,
 	PRIMARY KEY (mid), /*Temporary and arbitrary*/
-	CHECK (mid > 0 AND mid <= MaxMovieID(id))
+	FOREIGN KEY (mid) REFERENCES Movie(id),
+	FOREIGN KEY (aid) REFERENCES Actor(id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE Review (
 	name VARCHAR(20) NOT NULL,
 	time TIMESTAMP NOT NULL,
-	mid INTEGER NOT NULL,
+	mid INTEGER REFERENCES Movie(id),
 	rating INTEGER NOT NULL,
 	comment VARCHAR(500) NOT NULL,
 	/*PRIMARY KEY () MIGHT NOT HAVE PRIMARY KEY*/
 	/*CHECK - IMPLEMENT A CHECK LATER?*/
-	
+	FOREIGN KEY (mid) REFERENCES Movie(id),
+	CHECK (rating >= 0 AND rating <= 5)
 ) ENGINE = InnoDB;
 
 CREATE TABLE MaxPersonID (

@@ -54,7 +54,6 @@ CREATE TABLE MovieActor (
 	PRIMARY KEY (mid), /*Temporary and arbitrary*/
 	CHECK (mid > 0 AND mid <= MaxMovieID(id))
 ) ENGINE = InnoDB;
-) ENGINE = InnoDB;
 
 CREATE TABLE Review (
 	name VARCHAR(20) NOT NULL,

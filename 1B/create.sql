@@ -58,11 +58,11 @@ CREATE TABLE MovieActor (
 ) ENGINE = InnoDB;
 
 CREATE TABLE Review (
-	name VARCHAR(20) NULL,
-	time TIMESTAMP NULL,
+	name VARCHAR(20) NOT NULL,
+	time TIMESTAMP NOT NULL,
 	mid INTEGER REFERENCES Movie(id),
-	rating INTEGER NULL,
-	comment VARCHAR(500) NULL,
+	rating INTEGER NOT NULL,
+	comment VARCHAR(500) NULL,	#Comments are optional but you have to give a rating
 	FOREIGN KEY (mid) REFERENCES Movie(id),
 	CHECK (rating >= 0 AND rating <= 5)
 ) ENGINE = InnoDB;

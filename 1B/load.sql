@@ -25,6 +25,18 @@ FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 LOAD DATA LOCAL INFILE '~/data/movieactor2.del' INTO TABLE MovieActor
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"';
 
-INSERT INTO MaxPersonID VALUES (69000);
+INSERT INTO MaxPersonID(id) VALUES ((
+	SELECT Max(id)
+	FROM (
+		SELECT Max(id) + 1 as id
+		FROM Actor
+		UNION
+		SELECT Max(id) + 1 as id
+		FROM Director
+		) as tmp
+));
 
-INSERT INTO MaxMovieID VALUES (4750);
+INSERT INTO MaxMovieID(id) VALUES((
+	SELECT Max(id)
+	FROM Movie
+));

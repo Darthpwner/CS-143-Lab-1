@@ -4,7 +4,7 @@ CREATE TABLE Movie (
 	title VARCHAR(100) NOT NULL,
 	year INTEGER NOT NULL,
 	rating VARCHAR(10) NOT NULL,
-	company VARCHAR(10) NOT NULL,
+	company VARCHAR(50) NOT NULL,
 	PRIMARY KEY (id),
 	CHECK (id > 0 AND id <= MaxMovieID(id))
 ) ENGINE = InnoDB;

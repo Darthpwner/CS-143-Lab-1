@@ -52,7 +52,6 @@ CREATE TABLE MovieActor (
 	mid INTEGER REFERENCES Movie(id),
 	aid INTEGER REFERENCES Actor(id),
 	role VARCHAR(50) NOT NULL,
-	PRIMARY KEY (mid), /*Temporary and arbitrary*/
 	FOREIGN KEY (mid) REFERENCES Movie(id),
 	FOREIGN KEY (aid) REFERENCES Actor(id)
 ) ENGINE = InnoDB;
@@ -63,8 +62,6 @@ CREATE TABLE Review (
 	mid INTEGER REFERENCES Movie(id),
 	rating INTEGER NULL,
 	comment VARCHAR(500) NULL,
-	/*PRIMARY KEY () MIGHT NOT HAVE PRIMARY KEY*/
-	/*CHECK - IMPLEMENT A CHECK LATER?*/
 	FOREIGN KEY (mid) REFERENCES Movie(id),
 	CHECK (rating >= 0 AND rating <= 5)
 ) ENGINE = InnoDB;

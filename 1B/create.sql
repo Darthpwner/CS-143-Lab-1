@@ -3,7 +3,7 @@ CREATE TABLE Movie (
 	id INTEGER NOT NULL,
 	title VARCHAR(100) NOT NULL,
 	year INTEGER NOT NULL,
-	rating VARCHAR(10) NOT NULL,
+	rating VARCHAR(10),
 	company VARCHAR(50) NOT NULL,
 	PRIMARY KEY (id),
 	CHECK (id > 0 AND id <= MaxMovieID(id))
@@ -35,7 +35,7 @@ CREATE TABLE Director (
 #MovieGenres;
 CREATE TABLE MovieGenre (
 	mid INTEGER REFERENCES Movie(id),
-	genre VARCHAR (20) NOT NULL,
+	genre VARCHAR (20),
 	/*UNIQUE(mid, genre),*/
 	FOREIGN KEY (mid) REFERENCES Movie(id)
 ) ENGINE = InnoDB;

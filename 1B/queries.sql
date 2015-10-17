@@ -3,8 +3,9 @@
 
 SELECT DISTINCT last, first
 #SELECT firstname, lastname
-FROM ACTOR A, MOVIE M, MOVIEACTOR MA
+FROM ACTOR A, MOVIEACTOR MA, MOVIE M
 WHERE M.title = 'Die Another Day' AND A.id = MA.aid AND M.id = MA.mid
+
 /*Give me the count of all the actors who acted in multiple movies.*/
 
 

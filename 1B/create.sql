@@ -25,15 +25,25 @@ CREATE TABLE MovieGenre (
 ) ENGINE = InnoDB;
 
 CREATE TABLE MovieDirector (
-
+	mid INTEGER NOT NULL,
+	did INTEGER NOT NULL,
+	PRIMARY KEY (mid),	/*Temporary and arbitrary*/
+	CHECK (mid > 0 AND mid <= MaxMovieID(id))
 ) ENGINE = InnoDB;
 
 CREATE TABLE MovieActor (
-
+	mid INTEGER NOT NULL,
+	aid INTEGER NOT NULL,
+	role VARCHAR(50) NOT NULL,
+	PRIMARY KEY (mid), /*Temporary and arbitrary*/
+	CHECK (mid > 0 AND mid <= MaxMovieID(id))
+) ENGINE = InnoDB;
 ) ENGINE = InnoDB;
 
 CREATE TABLE Review (
-
+	mid INTEGER NOT NULL,
+	did INTEGER NOT NULL,
+	
 ) ENGINE = InnoDB;
 
 CREATE TABLE MaxPersonID (

@@ -1,0 +1,53 @@
+mysql> DROP TABLE tbl;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SHOW TABLES
+    -> ;
++----------------+
+| Tables_in_TEST |
++----------------+
+| Christine      |
+| Matthew        |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> DESCRIBE Christine
+    -> ;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| a     | int(11) | NO   | PRI | 0       |       |
+| b     | int(11) | NO   | PRI | 0       |       |
+| c     | int(11) | NO   | PRI | 0       |       |
++-------+---------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE Matthew;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| a     | int(11) | YES  |     | NULL    |       |
+| b     | int(11) | NO   | PRI | NULL    |       |
++-------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SOURCE foo.sql
+ERROR: 
+Failed to open file 'foo.sql', error: 2
+mysql> TEE foo.txt
+mysql> SOURCE foo.txt
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql> DROP TABLE tbl' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 0 rows affected (0.01 sec)
+
+mysql> SHOW TABLES
+    ->' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+----------------+
+| Tables_in_TEST |
++----------------+
+| Christine      |
+| Ma' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Ke' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Ke' at line 1
+mysql> quit

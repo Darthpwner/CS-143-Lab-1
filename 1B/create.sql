@@ -44,8 +44,8 @@ CREATE TABLE MovieDirector (
 	mid INTEGER REFERENCES Movie(id),
 	did INTEGER REFERENCES Director(id),
 	FOREIGN KEY (mid) REFERENCES Movie(id),
-	FOREIGN KEY (did) REFERENCES Director(id)
-	CHECK (mid > 0 AND mid <= MaxMovieID(id))
+	FOREIGN KEY (did) REFERENCES Director(id),
+	#CHECK (mid > 0 AND mid <= MaxMovieID(id))
 ) ENGINE = InnoDB;
 
 CREATE TABLE MovieActor (
@@ -53,7 +53,8 @@ CREATE TABLE MovieActor (
 	aid INTEGER REFERENCES Actor(id),
 	role VARCHAR(50) NOT NULL,
 	FOREIGN KEY (mid) REFERENCES Movie(id),
-	FOREIGN KEY (aid) REFERENCES Actor(id)
+	FOREIGN KEY (aid) REFERENCES Actor(id),
+	#CHECK (aid > 0 AND aid <= MaxPersonID(id))
 ) ENGINE = InnoDB;
 
 CREATE TABLE Review (

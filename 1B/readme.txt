@@ -1,0 +1,3 @@
+For this project 1B, Frank and Matt divided up the project as follows: Frank worked on getting the PHP code set up and traversing through the tables to obtain the data and displaying the data onto the html page, as well as the load sql commands in load.sql; Frank also worked on creating some tables in create.sql. Matt worked on testing the queries and coming up with a query in queries.sql, as well as the creation of some tables in create.sql and some violation sql commands in violate.sql. Both Frank and Matt debugged the program and used version control to make sure they each got the most up to date program.
+
+For the query.php, we did not include error checking, as we are asked to assume that the inputs are correct.

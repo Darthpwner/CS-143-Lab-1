@@ -32,13 +32,13 @@
 
 -- #MovieGenres Violations
 -- #mid INTEGER REFERENCES Movie(id),
-#DELETE FROM Movie
-#HERE (SELECT id)	#Violates constraint since we lose the tuple in Movie
+-- DELETE FROM Movie
+-- WHERE (SELECT id)	#Violates constraint since we lose the tuple in Movie
 # ERROR 1451 (23000) at line 29: Cannot delete or update a parent row: a foreign key constraint fails ('CS143', 'MovieGenre', CONSTRAINT 'MovieGenre_ibfk_1' FOREIGN KEY ('mid') REFERENCES 'Movie' ('id'))
 
 -- #FOREIGN KEY (mid) REFERENCES Movie(id)
--- UPDATE MovieGenre
--- SET mid = mid - 1 #Violates constraint since we updated the Foreign Key
+UPDATE MovieGenre
+SET mid = mid - 1 #Violates constraint since we updated the Foreign Key
 # ERROR 1452 (23000) at line 34: Cannot add or update a child row: a foreign key constraint fails ('CS143', 'MovieGenre', CONSTRAINT 'MovieGenre_ibfk_1' FOREIGN KEY ('mid') REFERENCES 'Movie' ('id'))
 
 -- #MovieDirector Violations

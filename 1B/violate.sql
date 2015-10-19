@@ -8,15 +8,22 @@ SET id = -1	# Violates constraint because id is negative
 #Actor Violations
 TODO #PRIMARY KEY (id),
 #CHECK (id > 0 AND id <= MaxPersonID(id))
-Update Actor
-Set id = MaxPersonID(id) + 1 #Violates constraint because id is larger than MaxPersonID
+UPDATE Actor
+SET id = MaxPersonID(id) + 1 #Violates constraint because id is larger than MaxPersonID
 
 #Director Violations
 TODO #PRIMARY KEY (id),
-TODO #CHECK (id > 0 AND id <= MaxPersonID(id))
+#CHECK (id > 0 AND id <= MaxPersonID(id))
+UPDATE Director
+SET id = 0 - MaxPersonID(id) #Violates constraint because id < 0
 
 #MovieGenres Violations
-TODO #mid INTEGER REFERENCES Movie(id),
+#mid INTEGER REFERENCES Movie(id),
+DELETE FROM Movie
+WHERE (SELECT id)	#Lose the tuple in Movie
+Update MovieGenres
+SET mid = mid + 1	#Violation 
+
 TODO #FOREIGN KEY (mid) REFERENCES Movie(id)
 
 #MovieDirector Violations

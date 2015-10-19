@@ -44,7 +44,6 @@ CREATE TABLE MovieDirector (
 	did INTEGER REFERENCES Director(id),
 	FOREIGN KEY (mid) REFERENCES Movie(id),
 	FOREIGN KEY (did) REFERENCES Director(id)
-	#CHECK (mid > 0 AND mid <= MaxMovieID(id))
 ) ENGINE = InnoDB;
 
 CREATE TABLE MovieActor (

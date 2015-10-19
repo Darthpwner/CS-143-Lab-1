@@ -44,7 +44,9 @@ if ($_GET["query"]){
 
 	// check that the query is valid
 	if (!$result){
-		die('The query could not be performed <br/>' . mysql_error());
+		$error_msg = mysql_error();
+		print "The query could not be performed: $error_msg <br/>";
+		exit(1);
 	}
 
 	// get the results and place into tables to be displayed later

@@ -1,10 +1,15 @@
 #Movie Violations
-ALTER TABLE Movie ADD PRIMARY KEY (id); #PRIMARY KEY (id),
-TODO #CHECK (id > 0 AND id <= MaxMovieID(id))
+ #PRIMARY KEY (id),
+
+#CHECK (id > 0 AND id <= MaxMovieID(id))
+UPDATE Movie
+SET id = -1	# Violates constraint because id is negative
 
 #Actor Violations
 TODO #PRIMARY KEY (id),
-TODO #CHECK (id > 0 AND id <= MaxPersonID(id))
+#CHECK (id > 0 AND id <= MaxPersonID(id))
+Update Actor
+Set id = MaxPersonID(id) + 1 #Violates constraint because id is larger than MaxPersonID
 
 #Director Violations
 TODO #PRIMARY KEY (id),

@@ -8,7 +8,7 @@
 	Type an SQL query in the following box:
 
 	<p>
-		<form action="." method="GET">
+		<form /*action="."*/ method="GET">
 		<textarea name="query" cols="60" rows="8">
 		</textarea><br />
 		<input type="submit" value="Submit" />
@@ -21,22 +21,22 @@ if ($_GET["query"]){
 	$input = $_GET["query"];
 
 	// cs 143 connection
-	$database_connection = mysql_connect("localhost", "cs143", "");
-	if (!$database_connection) {
-		$error_msg = mysql_err($database_connection);
+	$db_connection = mysql_connect("localhost", "cs143", "");
+	if (!$db_connection) {
+		$error_msg = mysql_error($db_connection);
 		print "Connection cannot be established: $error_msg <br />";
 		exit(1);
 	}
 
 	// obtain the input
 	$query = $input;
-	mysql_select_db("CS143", "database_connection");
+	mysql_select_db("CS143", $db_connection);
 
 	// display user's query
 	echo "Your query: ".$query." <br />";
-	echo "<h3> Results from MyAQL: </h3>";
+	echo "<h3> Results from MySQL: </h3>";
 
-	$result = mysql_query($query, $database_connection);
+	$result = mysql_query($query, $db_connection);
 
 	// check that the query is valid
 	if (!$result){
@@ -53,10 +53,11 @@ if ($_GET["query"]){
 	}
 	echo '<tr>';
 
+    $i = 0;
 	// loop through a row of the result
 	while ($row = mysql_fetch_row($result)){
 		// for each element of the row, we want to display it
-		for ($i = 0; $i < $k; $k++){
+		for ($i = 0; $i < $k; $i++){
 			if ($row[$i] == NULL){
 				echo '<td> N/A </td>';
 			}
@@ -69,7 +70,7 @@ if ($_GET["query"]){
 	echo '</tr></table>';
 
 	// close the database, for now we are done
-	mysql_close($database_connection);
+	mysql_close($db_connection);
 }
 ?>
 

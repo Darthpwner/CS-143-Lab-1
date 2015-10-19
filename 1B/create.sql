@@ -36,7 +36,6 @@ CREATE TABLE Director (
 CREATE TABLE MovieGenre (
 	mid INTEGER REFERENCES Movie(id),
 	genre VARCHAR (20),
-	/*UNIQUE(mid, genre),*/
 	FOREIGN KEY (mid) REFERENCES Movie(id)
 ) ENGINE = InnoDB;
 

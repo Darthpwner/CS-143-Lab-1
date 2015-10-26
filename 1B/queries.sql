@@ -18,7 +18,8 @@ FROM (
 
 /*Give me the titles of all the Romance movies*/
 
+/*
 SELECT title
 FROM Movie M, MovieGenre MG
 WHERE M.id = MG.mid AND MG.genre = 'Romance';
-
+*/

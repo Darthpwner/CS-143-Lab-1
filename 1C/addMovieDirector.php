@@ -7,5 +7,11 @@
 		<h1>CS 143: Project 1C - Add Movie/Actor Relation</h1>
 		Add new actor in a movie:
 		<br></br>
+		<form action="./addAMovieActor.php" method="GET>
+			"Movie: "
+			// Need to fix this part
+			"Actor: "
+			// Need to fix this part
+			"Role: "
 	</body>
 </html>

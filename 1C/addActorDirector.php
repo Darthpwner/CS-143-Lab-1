@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Project 1C: Add Actor Director</title>
+		<title>Project 1C: Add Actor/Director</title>
 	</head>
 
 	<body>

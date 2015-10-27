@@ -1,11 +1,12 @@
 <html>
 	<head>
-		<title> Add New Movie </title>
-		<style type = "text/css">
-
+		<title>Project 1C: Add New Movie</title>
 	</head>
 	<body>
-		Add New Movie: <br/>
+		<h1> CS 143: Project 1C - Add New Movie</h1>
+		By Kang (Frank) Chen & Matthew Lin <br/>
+
+        Add New Movies:
 		<form action="./AddMovieInfo.php" method="GET">
 		Title: <input type "text" name = "title" maxlength = "20"><br/>
 		Company: <input type = "text" name = "company" maxlength = "50"><br/>
@@ -41,6 +42,7 @@
 		<input type = "checkbox" name = "genre_Western" value = "Action"> Western </input>
 		<br/>
 		<input type = "submit" value = "Add it!"/>
-		<hr/>
+
+		</form>
 	</body>
 </html>

@@ -30,7 +30,8 @@
 			Female
 			<br></br>
 			Date of Birth:
-			<input type="radio" value="Female" name="sex"></input>
+			<input type="text" name="dob"></input>
+			<br></br>
 			Date of Death:
 			<input type="text" name="dod"></input>
 			(leave blank if alive now)

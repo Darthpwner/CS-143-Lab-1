@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Project 1C: Add Actor Director</title>
+		<title>Project 1C: Add Actor/Director</title>
 	</head>
 
 	<body>
@@ -9,10 +9,10 @@
 
 		Add new actor/director:
 		<br></br>
-		<form method="GET" action="./addActorDirector.php"
+		<form action="./addActorDirector.php" method="GET">
 			Identity: 
 			<input type="radio" checked="true" value="Actor" name="identity"></input>
-			Actor
+			Actor 
 			<input type="radio" value="Director" name="identity"></input>
 			Director
 			<br></br>
@@ -24,7 +24,7 @@
 			<input type="text" maxlength="20" name="last"></input>
 			<br></br>
 			Sex:
-			<input type="radio" checked="true" value="Male"></input>
+			<input type="radio" checked="true" value="Male" name="sex"></input>
 			Male
 			<input type="radio" value="Female" name="sex"></input>
 			Female

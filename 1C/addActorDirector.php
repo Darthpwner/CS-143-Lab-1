@@ -24,7 +24,7 @@
 			<input type="text" maxlength="20" name="last"></input>
 			<br></br>
 			Sex:
-			<input type="radio" checked="true" value="Male"></input>
+			<input type="radio" checked="true" value="Male" name="sex"></input>
 			Male
 			<input type="radio" value="Female" name="sex"></input>
 			Female

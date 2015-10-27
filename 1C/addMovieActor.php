@@ -8,15 +8,17 @@
 		Add new actor in a movie:
 		<br></br>
 		<form action="./addAMovieActor.php" method="GET>
-			"Movie: "
-			// Need to fix this part, add the database
-			"Actor: "
-			// Need to fix this part, add the database
-			"Role: "
+			Movie: 
+			<select name="mid"></select>
+			<br></br>
+			Actor: 
+			<select name="aid"></select>
+			<br></br>
+			Role: 
 			<input type="text" name="role" maxlength="50">
-			<br>
+			<br></br>
 			<input type="submit" value="Add it!">
 		</form>
-		<hr> #Used as the separator
+		<hr>
 	</body>
 </html>

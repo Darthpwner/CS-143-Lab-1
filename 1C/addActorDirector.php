@@ -13,7 +13,7 @@
 			Identity: 
 			<input type="radio" checked="true" value="Actor" name="identity"></input>
 			Actor 
-			<input type="radio" checked="false" value="Director" name="identity"></input>
+			<input type="radio" value="Director" name="identity"></input>
 			Director
 			<br></br>
 			<hr></hr>

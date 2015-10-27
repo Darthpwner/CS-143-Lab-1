@@ -9,11 +9,11 @@
 
 		Add new actor/director:
 		<br></br>
-		<form method="GET" action="./addActorDirector.php"
+		<form action="./addActorDirector.php" method="GET">
 			Identity: 
 			<input type="radio" checked="true" value="Actor" name="identity"></input>
-			Actor
-			<input type="radio" value="Director" name="identity"></input>
+			Actor 
+			<input type="radio" checked="false" value="Director" name="identity"></input>
 			Director
 			<br></br>
 			<hr></hr>

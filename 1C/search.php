@@ -30,7 +30,7 @@ if ($_GET["keyword"]){
 	mysql_select_db("CS143", $db_connection);
 
 	// display user's query
-	echo "<b>Your query:</b> ".$keyword." <br />";
+	echo "You are searching: [".$keyword."] results...<br />";
 	echo "<h3> Results from MySQL: </h3>";
 
 	// get the result from using mysql_query 

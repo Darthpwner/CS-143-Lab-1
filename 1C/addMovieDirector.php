@@ -2,12 +2,10 @@
 	<html>
 	<head>
 		<title>Add a director to a movie</title>
-		<style type="text/css">
-		@import url(cs143style.css);
-		</style>
+
 	</head>	
 	<body>
-				Add new director to a movie: <br/>
+		<h1>CS 143: Project 1C - Add Movie Director</h1>
 		<form action="./addMovieDirector.php" method="GET">
 					
 			

@@ -84,7 +84,6 @@ if ($_GET["keyword"]){
 	// close tr and table tag
 	echo '</tr></table>';
 
-
 	getResult(Movie);
 
 	//Movie MySQL Query

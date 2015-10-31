@@ -1,20 +1,17 @@
 <html>
-
-	<head>
-		<title>Project 1C: Search Actor/Movie</title>
-	</head>
-
-	<body>
-		Search for actors/movies
-		<form action="./search.php" method="GET">
-			Search: 
-			<input type="text" name="keyword">
-			<input type="submit" value="Search">
+<head> 
+	<title> Project 1C: Search Actor/Movie</title>
+</head>
+  
+<body>
+	Search for actors/movies
+		<form /*action="."*/ method="GET">
+			<input type="text" name="query">
+			<input type="submit" value="Search" />
 		</form>
-		<hr>
+	<hr>
 
-		<!-- PHP code-->
-	<?php
+<?php
 // get input
 if ($_GET["query"]){
 	$input = $_GET["query"];
@@ -79,6 +76,5 @@ if ($_GET["query"]){
 }
 ?>
 
-	
-	</body>
+</body>
 </html>

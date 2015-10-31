@@ -2,7 +2,6 @@
 	<head>
 		<title>Project 1C: Show Actor Information</title>
 	</head>
-
 	<body>
 		<?php
 			if ($_GET["id"]) {

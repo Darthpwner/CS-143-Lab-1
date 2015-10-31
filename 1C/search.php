@@ -47,7 +47,7 @@ if ($_GET["keyword"]){
 	getResult(Actor);
 
 		// get the result from using mysql_query 
-	$result = mysql_query('SELECT first FROM Actor WHERE last LIKE "%Matthew%"', $db_connection);
+	$result = mysql_query("SELECT first FROM Actor WHERE last LIKE '%Matthew%'", $db_connection);
 
 	// check that the query is valid
 	if (!$result){
@@ -90,7 +90,7 @@ if ($_GET["keyword"]){
 	//Movie MySQL Query
 
 	// get the result from using mysql_query 
-	$result = mysql_query('SELECT title FROM Movie WHERE title LIKE "%LOVE%"', $db_connection);
+	$result = mysql_query("SELECT title FROM Movie WHERE title LIKE '%LOVE%'", $db_connection);
 
 	// check that the query is valid
 	if (!$result){

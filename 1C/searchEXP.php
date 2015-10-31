@@ -6,12 +6,8 @@
 <body>
 	Search for actors/movies
 		<form /*action="."*/ method="GET">
-
-<!--		<input type="text" name="keyword">-->
-		
-		<textarea name="query">
-		</textarea>
-		<input type="submit" value="Search" />
+			<input type="text" name="query">
+			<input type="submit" value="Search" />
 		</form>
 	<hr>
 

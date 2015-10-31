@@ -12,8 +12,9 @@
 	<hr>
 
 <?php
-function getResult() {
+function getResult($resultType) {
 	//TODO 
+	echo "You are searching: [$resultType] results...<br />";
 }
 
 // get input
@@ -33,9 +34,12 @@ if ($_GET["keyword"]){
 	$keyword = $input;
 	mysql_select_db("CS143", $db_connection);
 
-	// display user's query
+	// display user's keyword search
+
 	echo "You are searching: [".$keyword."] results...<br />";
-	echo "<h3> Results from MySQL: </h3>";
+	
+	getResult(Actor);
+	getResult(Movie);
 
 	//Actor MySQL Query
 

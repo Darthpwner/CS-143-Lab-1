@@ -46,17 +46,28 @@ if ($_GET["keyword"]){
 	mysql_select_db("CS143", $db_connection);
 
 	// display user's keyword search
-	echo "You are searching: ";
+	echo "You are searching: [";
 	for($i = 0; $i < count($keyword); $i++) {
-		echo "$keyword[$i] ";
+		echo "$keyword[$i]";
+		if($i < count($keyword) - 1) {
+			echo " ";
+		}
 	}
-	echo " results...<br /><br />";
+	echo "] results...<br /><br />";
 	
 	//Actor MySQL Query
 	getResult(Actor);
 
 		// get the result from using mysql_query 
-	$result = mysql_query("SELECT first, last FROM Actor WHERE last LIKE '%$keyword%'", $db_connection);
+	$query = "SELECT first, last FROM Actor WHERE last LIKE ";
+	for($i = 0; $i < count($keyword); $i++) {
+		$query .= "'%$keyword[i]%'";
+		if($i < count($keyword) - 1) {
+			$query .= " AND ";
+		} 
+	}
+
+	$result = mysql_query($query, $db_connection);
 
 	// check that the query is valid
 	if (!$result){

@@ -5,13 +5,15 @@
   
 <body>
 	Search for actors/movies
-	<p>
 		<form /*action="."*/ method="GET">
-		<textarea name="query" cols="60" rows="8">
-		</textarea><br />
-		<input type="submit" value="Submit" />
+
+<!--		<input type="text" name="keyword">-->
+		
+		<textarea name="query">
+		</textarea>
+		<input type="submit" value="Search" />
 		</form>
-	</p>
+	<hr>
 
 <?php
 // get input

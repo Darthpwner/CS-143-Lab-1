@@ -33,6 +33,10 @@ if ($_GET["keyword"]){
 	echo "You are searching: [".$keyword."] results...<br />";
 	echo "<h3> Results from MySQL: </h3>";
 
+	//Actor MySQL Query
+
+	//Movie MySQL Query
+
 	// get the result from using mysql_query 
 	$result = mysql_query($keyword, $db_connection);
 

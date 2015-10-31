@@ -13,7 +13,7 @@
 
 <?php
 function getResult($resultType) {
-	//TODO 
+	//TODO
 	echo "Searching match records in [$resultType] database ...<br />"; 
 }
 
@@ -35,7 +35,7 @@ if ($_GET["keyword"]){
 	mysql_select_db("CS143", $db_connection);
 
 	// display user's keyword search
-	echo "You are searching: [".$keyword."] results...<br />";
+	echo "You are searching: [".$keyword."] results...<br /><br />";
 	
 	getResult(Actor);
 	getResult(Movie);

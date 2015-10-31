@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Project 1C: Add Movie/Actor relationship</title>
+		<title>Project 1C: Add Movie or Actor relationship</title>
 	</head>
 
 	<body>

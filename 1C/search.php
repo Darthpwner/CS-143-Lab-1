@@ -38,7 +38,7 @@ if ($_GET["keyword"]){
 	//Movie MySQL Query
 
 	// get the result from using mysql_query 
-	$result = mysql_query($keyword, $db_connection);
+	$result = mysql_query('SELECT * FROM Movie WHERE title = ".$keyword.', $db_connection);
 
 	// check that the query is valid
 	if (!$result){

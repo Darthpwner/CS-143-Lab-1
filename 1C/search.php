@@ -16,7 +16,11 @@ function getResult($resultType) {
 	//TODO
 	echo "Searching match records in [$resultType] database ...<br />"; 
 	// get the result from using mysql_query 
-	$result = mysql_query('SELECT title FROM Movie WHERE title = "Die Another Day"', $db_connection);
+	if($resultType == Actor) {
+
+	} else {	//resultType == Movie
+
+	}
 }
 
 // get input

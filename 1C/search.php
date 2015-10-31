@@ -90,7 +90,7 @@ if ($_GET["keyword"]){
 	//Movie MySQL Query
 
 	// get the result from using mysql_query 
-	$result = mysql_query('SELECT title FROM Movie WHERE title = "Die Another Day"', $db_connection);
+	$result = mysql_query('SELECT title FROM Movie WHERE title LIKE "%Love%"', $db_connection);
 
 	// check that the query is valid
 	if (!$result){

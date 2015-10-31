@@ -6,15 +6,15 @@
 <body>
 	Search for actors/movies
 		<form /*action="."*/ method="GET">
-			<input type="text" name="query">
+			<input type="text" name="keyword">
 			<input type="submit" value="Search" />
 		</form>
 	<hr>
 
 <?php
 // get input
-if ($_GET["query"]){
-	$input = $_GET["query"];
+if ($_GET["keyword"]){
+	$input = $_GET["keyword"];
 
 	// cs 143 connection
 	$db_connection = mysql_connect("localhost", "cs143", "");
@@ -26,15 +26,15 @@ if ($_GET["query"]){
 	}
 
 	// get input and select database
-	$query = $input;
+	$keyword = $input;
 	mysql_select_db("CS143", $db_connection);
 
 	// display user's query
-	echo "<b>Your query:</b> ".$query." <br />";
+	echo "<b>Your query:</b> ".$keyword." <br />";
 	echo "<h3> Results from MySQL: </h3>";
 
 	// get the result from using mysql_query 
-	$result = mysql_query($query, $db_connection);
+	$result = mysql_query($keyword, $db_connection);
 
 	// check that the query is valid
 	if (!$result){

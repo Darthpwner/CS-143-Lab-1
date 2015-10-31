@@ -57,7 +57,7 @@ if ($_GET["keyword"]){
 	}
 
 	// get the results and place into tables to be displayed later
-	$k = 0;
+	$k = 1;
 	echo '<table border=1 cellspacing=1 cellpadding=2><tr>';
 
 	while ($k < mysql_num_fields($result)){
@@ -99,7 +99,7 @@ if ($_GET["keyword"]){
 	}
 
 	// get the results and place into tables to be displayed later
-	$k = 0;
+	$k = 1;
 	echo '<table border=1 cellspacing=1 cellpadding=2><tr>';
 
 	while ($k < mysql_num_fields($result)){

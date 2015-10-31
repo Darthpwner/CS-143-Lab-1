@@ -38,9 +38,6 @@ if ($_GET["keyword"]){
 
 	// get input and select database
 	$keyword = explode(' ', $input);	//Keywords can be separated by spaces
-	// echo "$keyword[0] <br />";
-	// echo "$keyword[1] <br />";
-	// echo "$keyword[2] <br />";
 		
 	//$keyword = $input;
 	mysql_select_db("CS143", $db_connection);
@@ -49,7 +46,7 @@ if ($_GET["keyword"]){
 	echo "You are searching: [";
 	for($i = 0; $i < count($keyword); $i++) {
 		echo "$keyword[$i]";
-		if($i < count($keyword) - 1) {
+		if($i < count($keyword) - 1) {	//Handles multi-word searches
 			echo " ";
 		}
 	}
@@ -58,14 +55,16 @@ if ($_GET["keyword"]){
 	//Actor MySQL Query
 	getResult(Actor);
 
-		// get the result from using mysql_query 
+	// get the result from using mysql_query 
 	$query = "SELECT first, last FROM Actor WHERE last LIKE ";
 	for($i = 0; $i < count($keyword); $i++) {
-		$query .= "'%$keyword[i]%'";
+		$query .= "'%{$keyword[$i]}%'";
 		if($i < count($keyword) - 1) {
 			$query .= " AND ";
 		} 
 	}
+
+	echo $query;
 
 	$result = mysql_query($query, $db_connection);
 

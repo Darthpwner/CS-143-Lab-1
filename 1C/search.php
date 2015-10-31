@@ -12,6 +12,10 @@
 	<hr>
 
 <?php
+function getResult() {
+	//TODO 
+}
+
 // get input
 if ($_GET["keyword"]){
 	$input = $_GET["keyword"];

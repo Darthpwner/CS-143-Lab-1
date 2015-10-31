@@ -37,11 +37,20 @@ if ($_GET["keyword"]){
 	}
 
 	// get input and select database
-	$keyword = $input;
+	$keyword = explode(' ', $input);	//Keywords can be separated by spaces
+	// echo "$keyword[0] <br />";
+	// echo "$keyword[1] <br />";
+	// echo "$keyword[2] <br />";
+		
+	//$keyword = $input;
 	mysql_select_db("CS143", $db_connection);
 
 	// display user's keyword search
-	echo "You are searching: [".$keyword."] results...<br /><br />";
+	echo "You are searching: ";
+	for($i = 0; $i < count($keyword); $i++) {
+		echo "$keyword[$i] ";
+	}
+	echo " results...<br /><br />";
 	
 	//Actor MySQL Query
 	getResult(Actor);

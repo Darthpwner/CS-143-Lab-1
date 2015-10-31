@@ -47,7 +47,7 @@ if ($_GET["keyword"]){
 	getResult(Actor);
 
 		// get the result from using mysql_query 
-	$result = mysql_query("SELECT first FROM Actor WHERE last LIKE '%$keyword%'", $db_connection);
+	$result = mysql_query("SELECT first, last FROM Actor WHERE last LIKE '%$keyword%'", $db_connection);
 
 	// check that the query is valid
 	if (!$result){

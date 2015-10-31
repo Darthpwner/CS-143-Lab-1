@@ -14,7 +14,7 @@
 <?php
 function getResult($resultType) {
 	//TODO 
-	echo "You are searching: [$resultType] results...<br />";
+	echo "Searching match records in [$resultType] database ...<br />"; 
 }
 
 // get input
@@ -35,7 +35,6 @@ if ($_GET["keyword"]){
 	mysql_select_db("CS143", $db_connection);
 
 	// display user's keyword search
-
 	echo "You are searching: [".$keyword."] results...<br />";
 	
 	getResult(Actor);

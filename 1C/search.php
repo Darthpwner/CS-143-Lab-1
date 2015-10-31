@@ -43,6 +43,7 @@ if ($_GET["keyword"]){
 	// display user's keyword search
 	echo "You are searching: [".$keyword."] results...<br /><br />";
 	
+	//Actor MySQL Query
 	getResult(Actor);
 
 		// get the result from using mysql_query 
@@ -85,8 +86,6 @@ if ($_GET["keyword"]){
 
 
 	getResult(Movie);
-
-	//Actor MySQL Query
 
 	//Movie MySQL Query
 

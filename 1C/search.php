@@ -17,9 +17,9 @@ function getResult($resultType) {
 	echo "Searching match records in [$resultType] database ...<br />"; 
 	// get the result from using mysql_query 
 	if($resultType == Actor) {
-
+		echo "FUCK";
 	} else {	//resultType == Movie
-
+		echo "BITCH";
 	}
 }
 

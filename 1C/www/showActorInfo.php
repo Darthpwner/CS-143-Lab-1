@@ -15,10 +15,16 @@
 
 			//Assign variables
 			$row = mysql_fetch_row($actor_query);
-   // 		$name = ".$row[0]." ".$row[1].";
-    		$sex = $row[2];
-    		$dob = $row[3];
-    		$dod = $row[4];
+			echo $row[0];
+			echo $row[1];
+
+
+
+    		//$name = ".$row[0]." ".$row[1].";
+    		echo "<b>Sex:</b> ".$row[2]."<br/>"; //sex
+    		// $sex = $row[2];
+    		// $dob = $row[3];
+    		// $dod = $row[4];
 
     		// echo "Name: $name<br />";
     		echo "Sex: $sex<br />";

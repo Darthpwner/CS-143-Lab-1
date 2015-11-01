@@ -4,13 +4,20 @@
 	</head>
 	<body>
 		<?php
-			//After user clicks, get information from the link!
-			$title = "";
-			$year = "";
-			$rating = "";
-			$company = "";
+			$movie_query = "SELECT title, producer, rating, year FROM Movie WHERE title LIKE '%{$keyword[0]}%'";
 
-			include 'search.php';
+			//After user clicks, get information from the link!
+			$title = "Bruno";
+			$year = "2009";
+			$rating = "5";
+			$company = "YOLO Film";
+
+			echo "$title<br />";
+			echo "$year<br />";
+			echo "$rating<br />";
+			echo "$company<br />";
+
+			// include 'search.php';
 		?>
 	</body>
 </html>

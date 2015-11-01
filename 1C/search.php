@@ -38,8 +38,7 @@ if ($_GET["keyword"]){
 
 	// get input and select database
 	$keyword = explode(' ', $input);	//Keywords can be separated by spaces
-		
-	//$keyword = $input;
+
 	mysql_select_db("CS143", $db_connection);
 
 	// display user's keyword search
@@ -64,7 +63,7 @@ if ($_GET["keyword"]){
 		$actor_query .= " AND (first LIKE '%{$keyword[$i]}%' OR last LIKE '%{$keyword[$i]}%')";
 	}																	  
 
-	echo $actor_query;	//Testing Purpose
+	//echo $actor_query;	//Testing Purpose
 
 	$result = mysql_query($actor_query, $db_connection);
 
@@ -116,7 +115,7 @@ if ($_GET["keyword"]){
 		$movie_query .= " AND title LIKE '%{$keyword[$i]}%'";
 	}
 
-	echo $movie_query;	//Testing Purpose
+	//echo $movie_query;	//Testing Purpose
 
 	$result = mysql_query("$movie_query", $db_connection);
 

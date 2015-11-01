@@ -4,6 +4,20 @@
 	</head>
 	<body>
 		<?php
+			function printVariables($name, $sex, $dob, $dod) {
+				echo "Name: $name<br />";
+    			echo "Sex: $sex<br />";
+    			echo "Date of Birth: $dob<br />";
+
+    			echo "Date of Death: ";
+    			//Print variables
+				if($dod != "") {
+					echo "$row[4]";
+				} else {
+					echo "Still Alive<br />";
+				}
+			}
+
 			include 'search.php';
 
 			//establish connection with the MySQL database
@@ -21,27 +35,13 @@
 
 			//Assign variables
 			$row = mysql_fetch_row($result);
-			// echo "$row[0]";
-			// echo "$row[1]";
-
     		$name .= "$row[0] $row[1]";
     		$sex = $row[2];
     		$dob = $row[3];
     		$dod = $row[4];
 
-    		echo "Name: $name<br />";
-    		echo "Sex: $sex<br />";
-    		echo "Date of Birth: $dob<br />";
-
-   //  		echo "Date of Death: ";
-   //  		//Print variables
-			// if($dod != "") {
-			// 	echo "$row[4]";
-			// } else {
-			// 	echo "Still Alive<br />";
-			// }
-
-			include 'search.php';
+    		//Print variables
+    		printVariables($name, $sex, $dob, $dod);
 		?>
 	</body>
 </html>

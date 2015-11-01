@@ -71,7 +71,7 @@ if ($_GET["keyword"]){
     	$first = $row[0];
     	$last = $row[1];
     	$dob = $row[2];
-    	print "$first $last($dob)<br />";
+    	print "Actor: $first $last($dob)<br />";
 	}
 
 	 getResult(Movie);
@@ -94,7 +94,7 @@ if ($_GET["keyword"]){
 	while($row = mysql_fetch_row($result)) {
     	$title = $row[0];
     	$year = $row[1];
-    	print "$title($year)<br />";
+    	print "Movie: $title($year)<br />";
 	}
 
 	// close the database

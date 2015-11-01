@@ -43,7 +43,7 @@ if ($_GET["keyword"]){
 	mysql_select_db("CS143", $db_connection);
 
 	// display user's keyword search
-	echo "You are searching: [";
+	echo "You are searching [";
 	for($i = 0; $i < count($keyword); $i++) {
 		echo "$keyword[$i]";
 		if($i < count($keyword) - 1) {	//Handles multi-word searches

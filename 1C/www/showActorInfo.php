@@ -65,10 +65,13 @@
     		//Print roles
     		printRoles($role, $title, $year);
 
- 			while($row = mysql_fetch_row($result)) {
+ 			while($row = mysql_fetch_row($result2)) {
     			$role = $row[0];
+    			echo $role;
     			$title = $row[1];
+    			echo $title;
     			$year = $row[2];
+    			echo $year;
     			print "'$role' in $title($year)<br />";
     		}
 		?>

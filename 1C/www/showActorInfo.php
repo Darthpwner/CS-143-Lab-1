@@ -5,6 +5,7 @@
 	<body>
 		<?php
 			function printVariables($name, $sex, $dob, $dod) {
+				echo "<b>Actor Information</b><br/>";
 				echo "Name: $name<br />";
     			echo "Sex: $sex<br />";
     			echo "Date of Birth: $dob<br />";
@@ -27,7 +28,7 @@
 			mysql_select_db("CS143", $db_connection);
 
 			$input = $_GET["aid"];   // WHAT VALUE DO I have?
-			echo "$input<br />";
+			//echo "$input<br />";
 
 			$actor_query = "SELECT first, last, sex, dob FROM Actor WHERE id=$input";
 

@@ -61,7 +61,7 @@ if ($_GET["keyword"]){
 	$actor_query = "SELECT first, last FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
 	
 	for($i = 1; $i < count($keyword); $i++) {	//Handles multi-word searches for actor
-		$actor_query .= " AND (first LIKE '%{$keyword[i]}%' OR last LIKE '%{$keyword[i]}%')";
+		$actor_query .= " AND (first LIKE '%{$keyword[$i]}%' OR last LIKE '%{$keyword[$i]}%')";
 	}																	  
 
 	echo $actor_query;

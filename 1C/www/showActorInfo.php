@@ -9,8 +9,14 @@
 			$input = $_GET["aid"];   // WHAT VALUE DO I have?
 			echo "$input<br />";
 
-			$actor_query = "SELECT first, last, dob FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
+			$actor_query = "SELECT first, last, dob FROM Actor WHERE id=$input";
 
+			
+
+			// for($i = 0; $i < 10; $i++) {
+			// 	echo $actor_query[$i];
+			// }
+			
 			//Assign variables
 			// $row = mysql_fetch_row($actor_query)
    //  		$name = ".$row[0]." ".$row[1].";

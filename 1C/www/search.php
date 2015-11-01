@@ -68,13 +68,12 @@ if ($_GET["keyword"]){
 	//echo $actor_query;	//Testing Purpose
 
 	$result = mysql_query($actor_query, $db_connection);
-	echo $result[3];
-
+	
 	while($row = mysql_fetch_row($result)) {
     	$first = $row[0];
     	$last = $row[1];
     	$dob = $row[2];
-    	$id = $row[3];
+    	$id = $row[3];	//Used to pass in aid to the showActorInfo.php file
     	print "Actor: <a href=showActorInfo.php?aid=$id/>$first $last($dob)</a><br />";
 	}
 
@@ -98,7 +97,7 @@ if ($_GET["keyword"]){
 	while($row = mysql_fetch_row($result)) {
     	$title = $row[0];
     	$year = $row[1];
-    	$id = $row[2];
+    	$id = $row[2];	//Used to pass in mid to the showMovieInfo.php file
     	print "Movie: <a href=showMovieInfo.php?mid=$id/>$title($year)</a><br />";
 	}
 

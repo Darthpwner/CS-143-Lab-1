@@ -56,17 +56,17 @@ if ($_GET["keyword"]){
 	getResult(Actor);
 
 	// get the result from using mysql_query 
-	$query = "SELECT first, last FROM Actor WHERE last LIKE ";
+	$actor_query = "SELECT first, last FROM Actor WHERE last LIKE ";
 	for($i = 0; $i < count($keyword); $i++) {
-		$query .= "'%{$keyword[$i]}%'";
+		$actor_query .= "'%{$keyword[$i]}%'";
 		if($i < count($keyword) - 1) {
-			$query .= " AND ";
+			$actor_query .= " AND ";
 		} 
 	}
 
-	echo $query;
+	echo $actor_query;
 
-	$result = mysql_query($query, $db_connection);
+	$result = mysql_query($actor_query, $db_connection);
 
 	// check that the query is valid
 	if (!$result){
@@ -108,7 +108,17 @@ if ($_GET["keyword"]){
 	//Movie MySQL Query
 
 	// get the result from using mysql_query 
-	$result = mysql_query("SELECT title FROM Movie WHERE title LIKE '%$keyword%'", $db_connection);
+	$movie_query = "SELECT title FROM Movie WHERE title LIKE ";
+	for($i = 0; $i < count($keyword); $i++) {
+		$movie_query .= "'%{$keyword[$i]}%'";
+		if($i < count($keyword) - 1) {
+			$movie_query .= " AND ";
+		} 
+	}
+
+	echo $movie_query;
+
+	$result = mysql_query("$movie_query", $db_connection);
 
 	// check that the query is valid
 	if (!$result){

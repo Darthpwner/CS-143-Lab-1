@@ -105,6 +105,8 @@ if ($_GET["keyword"]){
 
 	getResult(Movie);
 
+	echo "<br />";
+
 	//Movie MySQL Query
 
 	// get the result from using mysql_query 

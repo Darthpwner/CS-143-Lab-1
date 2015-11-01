@@ -4,12 +4,10 @@
 	</head>
 	<body>
 		<?php
-			function yolo() {
-				echo "Bastille";
-			}
-
-			yolo();
-
+			$title = "";
+			$year = "";
+			$rating = "";
+			$company = "";
 
 			include 'search.php';
 		?>

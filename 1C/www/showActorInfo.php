@@ -4,7 +4,12 @@
 	</head>
 	<body>
 		<?php
-			include 'search.php'
+			$name = "";	//Concatenate first and last 
+			$sex = "";
+			$dob = "";
+			$dod = "";
+
+			include 'search.php';
 		?>
 	</body>
 </html>

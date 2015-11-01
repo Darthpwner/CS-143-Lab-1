@@ -57,12 +57,17 @@ if ($_GET["keyword"]){
 
 	// get the result from using mysql_query 
 	$actor_query = "SELECT first, last FROM Actor WHERE last LIKE ";
-	for($i = 0; $i < count($keyword); $i++) {
-		$actor_query .= "'%{$keyword[$i]}%'";
-		if($i < count($keyword) - 1) {
-			$actor_query .= " AND ";
-		} 
-	}
+	
+	// if(count($keyword) > 1) {	//Handle multi-word searches for actor
+		for($i = 0; $i < count($keyword); $i++) {
+			$actor_query .= "'{$keyword[$i]}'";
+			if($i < count($keyword) - 1) {
+				$actor_query .= " AND ";
+			} 
+		}	
+	// } else {
+	// 	$actor_query .= "'%{$keyword[$i]}%'";
+	// }
 
 	echo $actor_query;
 

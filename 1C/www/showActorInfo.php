@@ -60,17 +60,17 @@
     		$roles_query = "SELECT MA.role, M.title, M.year, FROM MovieActor MA, Movie M WHERE MA.aid = $input AND 
     						MA.mid = M.id ORDER BY M.year DESC";
 
-    		// result2 = mysql_query($roles_query, $db_connection);
+    		$result2 = mysql_query($roles_query, $db_connection);
 
     		//Print roles
-    // 		printRoles($role, $title, $year);
+    		printRoles($role, $title, $year);
 
- 			// while($row = mysql_fetch_row($result)) {
-    // 			$role = $row[0];
-    // 			$title = $row[1];
-    // 			$year = $row[2];
-    // 			print "'$role' in $title($year)<br />";
-    // 		}
+ 			while($row = mysql_fetch_row($result)) {
+    			$role = $row[0];
+    			$title = $row[1];
+    			$year = $row[2];
+    			print "'$role' in $title($year)<br />";
+    		}
 		?>
 	</body>
 </html>

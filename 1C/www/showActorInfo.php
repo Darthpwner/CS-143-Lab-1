@@ -15,7 +15,7 @@
 
 			//Assign variables
 			$row = mysql_fetch_row($actor_query);
-			echo $row[0];
+			echo "$row[0]";
 			echo $row[1];
 
 

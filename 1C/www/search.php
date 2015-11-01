@@ -74,7 +74,7 @@ if ($_GET["keyword"]){
     	$last = $row[1];
     	$dob = $row[2];
     	$id = $row[3];	//Used to pass in aid to the showActorInfo.php file
-    	print "Actor: <a href=showActorInfo.php?aid=$id/>$first $last($dob)</a><br />";
+    	print "Actor: <a href=showActorInfo.php?aid=$id>$first $last($dob)</a><br />";
 	}
 
 	newLine();
@@ -98,7 +98,7 @@ if ($_GET["keyword"]){
     	$title = $row[0];
     	$year = $row[1];
     	$id = $row[2];	//Used to pass in mid to the showMovieInfo.php file
-    	print "Movie: <a href=showMovieInfo.php?mid=$id/>$title($year)</a><br />";
+    	print "Movie: <a href=showMovieInfo.php?mid=$id>$title($year)</a><br />";
 	}
 
 	// close the database

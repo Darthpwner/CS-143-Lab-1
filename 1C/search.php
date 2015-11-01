@@ -73,7 +73,7 @@ if ($_GET["keyword"]){
     	$first = $row[0];
     	$last = $row[1];
     	$dob = $row[2];
-    	print "Actor: $first $last($dob)<br />";
+    	print "Actor: <a href=http://oak.cs.ucla.edu/cs143//>$first $last($dob)</a><br />";
 	}
 
 	newLine();
@@ -95,7 +95,7 @@ if ($_GET["keyword"]){
 	while($row = mysql_fetch_row($result)) {
     	$title = $row[0];
     	$year = $row[1];
-    	print "Movie: $title($year)<br />";
+    	print "Movie: <a href=http://oak.cs.ucla.edu/cs143//>$title($year)</a><br />";
 	}
 
 	// close the database

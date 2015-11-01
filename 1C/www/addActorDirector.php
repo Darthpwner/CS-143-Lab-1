@@ -43,7 +43,7 @@
 				echo "<option value=\"$x\">$x</option>"; 
 		?>
 		</select>
-		(Month, Day, Year) 
+		(Month - Day - Year) 
 		</p>
 
 		<p><b>Date of Death (if Applicable): </b>
@@ -65,7 +65,7 @@
 				echo "<option value=\"$x\">$x</option>"; 
 		?>
 	 	</select>
-		(Month, Day, Year) 
+		(Month - Day - Year) 
 		</p>
 
 		<p><input type="submit" value="Add Person" name="clicked"/></p>
@@ -84,15 +84,15 @@
 			$actor_flag = isset($_POST["actorCheckBox"]);			// actor flag
 			$director_flag = isset($_POST["directorCheckBox"]);		// director flag
 
-			$dobday = $POST["dobday"];
-			$dobmonth = $POST["dobmonth"];
-			$dobyear = $POST["dobyear"]; 
+			$dobday = $_POST["dobday"];
+			$dobmonth = $_POST["dobmonth"];
+			$dobyear = $_POST["dobyear"]; 
 			$dob = "$dobyear-$dobmonth-$dobday"; 	
 
-			$dodday = $POST["dodday"];
-			$dodmonth = $POST["dodmonth"];
-			$dodyear = $POST["dodyear"]; 
-			$dod = "$dodyear-$dodmonth-$dodday"; 	
+			$dodday = $_POST["dodday"];
+			$dodmonth = $_POST["dodmonth"];
+			$dodyear = $_POST["dodyear"]; 
+			$dod = "$dodyear-$dodmonth-$dodday"; 
 			$dod_flag = 0;
 
 			$success = 0;
@@ -103,7 +103,7 @@
 			if ($doddday > 0 && $dodmonth > 0 && $dodyear > 0) {
 				$dod_flag = 1; // we want to add the dod, since it was inputted
 			}
-			
+
 			if (str_replace(" ", "", $tfirst) == ""){
 				echo "ENTER A FIRST NAME";
 			} elseif (str_replace(" ", "", $tlast) == "") {
@@ -124,10 +124,10 @@
 				$db = mysql_connect("localhost", "cs143", "");
 				if(!$db) {
 					$errmsg = mysql_error($db);
-					print "Connection failed: $errmsg <br />";
+					print "Connection SHIT failed: $errmsg <br />";
 					exit(1);
 				}					
-				mysql_select_db("CS143", $db);
+				mysql_select_db("TEST", $db);
 
 				$firstname = mysql_real_escape_string($tfirst);
 				$lastname = mysql_real_escape_string($tlast);
@@ -138,10 +138,13 @@
 				$pid = $pidfinished[0];
 
 				// add info to Actor Table
-				if ($dod_flag == 0)
+				if ($dod_flag == 0){
 					$addActor = "INSERT INTO Actor VALUES ($pid, '$lastname', '$firstname', '$sex', '$dob', NULL)";
-				else
+					echo $addActor;
+				}
+				else {
 					$addActor = "INSERT INTO Actor VALUES ($pid, '$lastname', '$firstname', '$sex', '$dob', '$dod')";
+				}
 
 				// add info to Director Table
 				if ($dod_flag == 0)
@@ -157,18 +160,36 @@
 						$success = 1;
 					} else { echo "ADDING ACTOR UNSUCCESSFUL."; }
 				}
-				if ($actor_flag) {
+				if ($director_flag) {
 					if (mysql_query($addDirector, $db)){
 						echo "SUCCESSFULLY ADDED $tfirst $tlast AS AN DIRECTOR. ";
 						// echo "View your profile <a href='./actors.php?id=$pid'>here</a><br/>";
 						$success = 1;
 					} else { echo "ADDING DIRECTOR UNSUCCESSFUL."; }
 				}
-				if ($success == 1)
-					mysql_query("UPDATE MaxPersonID SET id=id+1, $db");
+				if ($success == 1) {
+					mysql_query("UPDATE MaxPersonID SET id=id+1", $db);
+					echo "entered";
+				}
 				echo "</p>";
 				mysql_close($db);
 			}
+		} // checks to see if you click the submit but dont have the required input for actor or director
+	 	elseif ($_POST["clicked"] && (!$_POST["first"] || !$_POST["last"] || 
+			  	$_POST["dobyear"]=="0" || $_POST["dobmonth"]=="0" || $_POST["dobday"]=="0" || 
+				(!isset($_POST["actorCheckBox"]) && !isset($_POST["directorCheckBox"])))){
+		
+			// output errors
+			echo "<b>";
+			if (!$_POST["first"])
+				echo "PLEASE ENTER FIRST NAME.A <br/>";
+			if (!$_POST["last"])
+				echo "PLEASE ENTER LAST NAME. <br/>";
+			if (!isset($_POST["actorCheckBox"][0]) && !isset($_POST["actorCheckBox"][1]))
+				echo "PLEASE CHOOSE WHETHER YOU WANT ACTOR OR DIRECTOR. <br/>";
+			if ($_POST["dobyear"]=="0" || $_POST["dobmonth"]=="0" || $_POST["dobday"]=="0")
+				echo "PLEASE ENTER VALID BIRTHDAY <br/>";
+			echo "</b>";
 		}
 		?>
 	</body>

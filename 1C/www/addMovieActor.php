@@ -2,87 +2,96 @@
 	<head>
 		<title>Project 1C: Add Movie or Actor relationship</title>
 	</head>
-
+	<table border="0">
+		<tr>
+			<a href = "addActorDirector.php"> Add Actor or Director </a>
+			<br/>
+			<a href = "addMovieInfo.php"> Add Movie Info </a>
+			<br/>
+			<a href = "addMovieComment,php"> Add Movie Comment </a>
+			<br/>
+			<a href = "addMovieActor.php"> Add Movie Actor </a>
+			<br/>
+			<a href = "showActorInfo.php"> Show Actor Info </a>
+			<br/>
+			<a href = "showMovieInfo.php"> Show Movie Info </a>
+			<br/>
+			<a href = "search.php"> Search </a>
+			<br/>
+		</tr>
+	</table>
 	<body>
 		<h1>CS 143: Project 1C - Add Movie/Actor Relation</h1>
 		Add new actor in a movie:
 		<br></br>
 		<form action="./addAMovieActor.php" method="GET">
-			Movie: 
-			<select name="mid"></select>
-			<br></br>
-			Actor: 
-			<select name="aid"></select>
-			<br></br>
-			Role: 
-			<input type="text" name="role" maxlength="50">
-			<br></br>
-			<input type="submit" value="Add it!">
-		</form>
-		<hr>
+			<?php 
+				// create db connection
+				$db = mysql_connect("localhost", "cs143", "");
+				if(!$db) {
+					$errmsg = mysql_error($db);
+					print "Connection SHIT failed: $errmsg <br />";
+					exit(1);
+				}					
+				mysql_select_db("TEST", $db);
 
-		<?php
-		// get input
-		if ($_GET["query"]) {
-			$input = $_GET["query"];
-
-			// cs 143 connection
-			$db_connection = mysql_connect("localhost", "cs143", "");
-			// check for no connection
-			if (!$db_connection) {
-				$error_msg = mysql_error($db_connection);
-				print "Connection cannot be established: $error_msg <br />";
-				exit(1);
-			}
-
-			// get input and select database
-			$query = $input;
-			mysql_select_db("CS143", $db_connection);
-
-			// display user's query
-			echo "<b>Your query:</b> ".$query." <br />";
-			echo "<h3> Results from MySQL: </h3>";
-
-			// get the result from using mysql_query 
-			$result = mysql_query($query, $db_connection);
-
-			// check that the query is valid
-			if (!$result){
-				$error_msg = mysql_error();
-				print "The query could not be performed: $error_msg <br/>";
-				exit(1);
-			}
-
-			// get the results and place into tables to be displayed later
-			$k = 0;
-			echo '<table border=1 cellspacing=1 cellpadding=2><tr>';
-
-			while ($k < mysql_num_fields($result)){
-				$field = mysql_fetch_field($result, $k);
-				echo '<td><b>' . $field->name . '</b></td>';
-				$k = $k + 1;
-			}
-			echo '<tr>';
-
-		    $i = 0;
-			// loop through a row of the result
-			while ($row = mysql_fetch_row($result)){
-				// for each element of the row, we want to display it
-				for ($i = 0; $i < $k; $i++){
-					if ($row[$i] == NULL){
-						echo '<td> N/A </td>';
-					} else {
-						echo '<td>' . $row[$i] . '</td>';
-					}
+				// select all movie ids, titles, and years and place as options into dropdown
+				$movie = mysql_query("SELECT id, title, year FROM Movie ORDER BY title ASC", $db);
+				$movieOptions = "";
+				while($row = mysql_fetch_array($movie)){
+					$id = $row["id"];
+					$title = $row["title"];
+					$year = $row["year"];
+					$movieOptions .= "<option value=\"$id\">".$title." [".$year."]</option>";
 				}
-				echo '</td><tr>';
-			}
-			// close tr and table tag
-			echo '</tr></table>';
 
-			// close the database
-			mysql_close($db_connection);
-		}
-	?>
+				// select all actor ids, first name, last name, dob, and place as options in dropdown
+				$actor = mysql_query("SELECT id, first, last, dob FROM Actor ORDER BY first ASC", $db);
+				$actorOptions = "";
+				while ($row=mysql_fetch_array($actor)) {
+					$id = $row["id"];
+					$first = $row["first"];
+					$last = $row["last"];
+					$dob = $row["dob"];
+					$actorOptions .= "<option value = \"$id\">".$first." ".$last." [".$dob."]</option>";
+				}
+				mysql_free_result($actor);
+			?>
+			Movie: <select name="mid">
+						<?=$movieOptions?>
+				   </select><br/>
+			Actor: <select name="aid">
+						<?=$actorOptions?>
+				   </select><br/>
+			Role: <input type = "text" name="role" value = "<?php echo htmlspecialchars($_GET['role']);?>" maxlength = "50"> <br/>
+			<br/>
+			<input type = "submit" value = "Link Actor to Movie" />
+		</form>
+		<?php 
+				// get user input
+			$role = trim($_GET["role"]);
+			$movie = $_GET["mid"];
+			$actor = $_GET["aid"];
+
+			// pass in user inputs
+			if ($movie == "" && $actor == "" && $role == "") {	
+			} elseif ($movie == "") {
+				echo "MUST SELECT MOVIE FROM LIST.";
+			} elseif ($actor == "") {
+				echo "MUST SELECT ACTOR FROM THE LIST.";
+			} else {
+				$movie = mysql_escape_string($movie);
+				$actor = mysql_escape_string($actor);
+				$role = mysql_escape_string($role);
+
+				$query = "INSERT INTO MovieActor (mid, aid, role) VALUES ('$movie', '$actor', '$role')";
+
+				$result = mysql_query($query, $db) or die(mysql_error());
+				echo "ACTOR LINKED WITH MOVIE SUCCESSFULLY.";
+			}
+
+			mysql_close($db);
+		?>
+
 	</body>
 </html>

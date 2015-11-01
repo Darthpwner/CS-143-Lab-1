@@ -1,8 +1,6 @@
 <html>
-	<html>
 	<head>
-		<title>Add an existing director to a movie</title>
-
+		<title>Project 1C: Add an existing director to a movie</title>
 	</head>	
 	<table border="0">
 		<tr>
@@ -10,7 +8,7 @@
 			<br/>
 			<a href = "addMovieInfo.php"> Add Movie Info </a>
 			<br/>
-			<a href = "addMovieComment"> Add Movie Comment </a>
+			<a href = "addMovieComment.php"> Add Movie Comment </a>
 			<br/>
 			<a href = "addMovieActor.php"> Add Movie Actor </a>
 			<br/>

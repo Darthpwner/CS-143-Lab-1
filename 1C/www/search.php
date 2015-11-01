@@ -12,15 +12,27 @@
 	<hr>
 
 <?php
+//Utility function for a new line
+function newLine() {
+	echo "<br />";	//Gets new line for cleaner output
+}
+
+//Prints out the keyword you are searching for
 function getResult($resultType) {
-	//TODO
 	echo "Searching match records in [$resultType] database ...<br />"; 
-	// get the result from using mysql_query 
-	if($resultType == Actor) {
-		echo "FUCK";
-	} else {	//resultType == Movie
-		echo "BITCH";
+}
+
+// display user's keyword search
+function displayUserSearch($keyword) {
+	echo "You are searching [";
+	for($i = 0; $i < count($keyword); $i++) {
+		echo "$keyword[$i]";
+		if($i < count($keyword) - 1) {	//Handles multi-word searches
+			echo " ";
+		}
 	}
+	echo "] results...<br />";
+	newLine();
 }
 
 // get input
@@ -37,94 +49,54 @@ if ($_GET["keyword"]){
 	}
 
 	// get input and select database
-	$keyword = $input;
+	$keyword = explode(' ', $input);	//Keywords can be separated by spaces
+
 	mysql_select_db("CS143", $db_connection);
 
-	// display user's keyword search
-	echo "You are searching: [".$keyword."] results...<br /><br />";
-	
+	displayUserSearch($keyword);
+
 	//Actor MySQL Query
 	getResult(Actor);
 
-		// get the result from using mysql_query 
-	$result = mysql_query("SELECT first FROM Actor WHERE last LIKE '%$keyword%'", $db_connection);
+	// get the result from using mysql_query 
+	$actor_query = "SELECT first, last, dob FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
+	
+	for($i = 1; $i < count($keyword); $i++) {	//Handles multi-word searches for actor
+		$actor_query .= " AND (first LIKE '%{$keyword[$i]}%' OR last LIKE '%{$keyword[$i]}%')";
+	}																	  
 
-	// check that the query is valid
-	if (!$result){
-		$error_msg = mysql_error();
-		print "The query could not be performed: $error_msg <br/>";
-		exit(1);
+	//echo $actor_query;	//Testing Purpose
+
+	$result = mysql_query($actor_query, $db_connection);
+
+	while($row = mysql_fetch_row($result)) {
+    	$first = $row[0];
+    	$last = $row[1];
+    	$dob = $row[2];
+    	print "Actor: <a href=http://oak.cs.ucla.edu/cs143//>$first $last($dob)</a><br />";
 	}
 
-	// get the results and place into tables to be displayed later
-	$k = 1;	//Start at 1 to get first valid tuple
-	echo '<table border=1 cellspacing=1 cellpadding=2><tr>';
-
-	while ($k < mysql_num_fields($result)){
-		$field = mysql_fetch_field($result, $k);
-		echo '<td><b>' . $field->name . '</b></td>';
-		$k = $k + 1;
-	}
-	echo '<tr>';
-
-    $i = 0;
-	// loop through a row of the result
-	while ($row = mysql_fetch_row($result)){
-		// for each element of the row, we want to display it
-		for ($i = 0; $i < $k; $i++){
-			if ($row[$i] == NULL){
-				echo '<td> N/A </td>';
-			}
-			else {
-				echo '<td>' . $row[$i] . '</td>';
-			}
-		}
-		echo '</td><tr>';
-	}
-	// close tr and table tag
-	echo '</tr></table>';
-
-	getResult(Movie);
+	newLine();
 
 	//Movie MySQL Query
+	getResult(Movie);
 
 	// get the result from using mysql_query 
-	$result = mysql_query("SELECT title FROM Movie WHERE title LIKE '%$keyword%'", $db_connection);
-
-	// check that the query is valid
-	if (!$result){
-		$error_msg = mysql_error();
-		print "The query could not be performed: $error_msg <br/>";
-		exit(1);
+	$movie_query = "SELECT title, year FROM Movie WHERE title LIKE '%{$keyword[0]}%'";
+	
+	for($i = 1; $i < count($keyword); $i++) {	//Handle multi-word searches for movie
+		$movie_query .= " AND title LIKE '%{$keyword[$i]}%'";
 	}
 
-	// get the results and place into tables to be displayed later
-	$k = 1;	//Start at 1 to get first valid tuple
-	echo '<table border=1 cellspacing=1 cellpadding=2><tr>';
+	//echo $movie_query;	//Testing Purpose
 
-	while ($k < mysql_num_fields($result)){
-		$field = mysql_fetch_field($result, $k);
-		echo '<td><b>' . $field->name . '</b></td>';
-		$k = $k + 1;
-	}
-	echo '<tr>';
+	$result = mysql_query("$movie_query", $db_connection);
 
-    $i = 0;
-	// loop through a row of the result
-	while ($row = mysql_fetch_row($result)){
-		// for each element of the row, we want to display it
-		for ($i = 0; $i < $k; $i++){
-			if ($row[$i] == NULL){
-				echo '<td> N/A </td>';
-			}
-			else {
-				echo '<td>' . $row[$i] . '</td>';
-			}
-		}
-		echo '</td><tr>';
+	while($row = mysql_fetch_row($result)) {
+    	$title = $row[0];
+    	$year = $row[1];
+    	print "Movie: <a href=http://oak.cs.ucla.edu/cs143//>$title($year)</a><br />";
 	}
-	// close tr and table tag
-	echo '</tr></table>';
 
 	// close the database
 	mysql_close($db_connection);

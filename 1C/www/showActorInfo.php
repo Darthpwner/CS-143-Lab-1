@@ -11,13 +11,9 @@
 
 			$actor_query = "SELECT first, last, dob FROM Actor WHERE id=$input";
 
-			
+			$result = mysql_query($actor_query, $db_connection);
 
-			// for($i = 0; $i < 10; $i++) {
-			// 	echo $actor_query[$i];
-			// }
-			
-			//Assign variables
+			// Assign variables
 			// $row = mysql_fetch_row($actor_query)
    //  		$name = ".$row[0]." ".$row[1].";
    //  		$sex = $row[2];

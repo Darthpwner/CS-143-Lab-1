@@ -114,11 +114,16 @@ if ($_GET["keyword"]){
 
 	// get the result from using mysql_query 
 	$movie_query = "SELECT title FROM Movie WHERE title LIKE ";
-	for($i = 0; $i < count($keyword); $i++) {
-		$movie_query .= "'%{$keyword[$i]}%'";
-		if($i < count($keyword) - 1) {
-			$movie_query .= " AND ";
-		} 
+	
+	if(count($keyword) > 1) {
+			for($i = 0; $i < count($keyword); $i++) {	//Handle multi-word searches for movie
+			$movie_query .= "'{$keyword[$i]}'";
+			if($i < count($keyword) - 1) {
+				$movie_query .= " AND ";
+			} 
+		}
+	} else {	//Handles single word searches (Note: This is a substring!)
+		$movie_query .= "'%{$keyword[0]}%'";
 	}
 
 	echo $movie_query;

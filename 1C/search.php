@@ -23,6 +23,18 @@ function getResult($resultType) {
 	}
 }
 
+// display user's keyword search
+function displayUserSearch($keyword) {
+	echo "You are searching [";
+	for($i = 0; $i < count($keyword); $i++) {
+		echo "$keyword[$i]";
+		if($i < count($keyword) - 1) {	//Handles multi-word searches
+			echo " ";
+		}
+	}
+	echo "] results...<br /><br />";
+}
+
 // get input
 if ($_GET["keyword"]){
 	$input = $_GET["keyword"];
@@ -41,15 +53,7 @@ if ($_GET["keyword"]){
 
 	mysql_select_db("CS143", $db_connection);
 
-	// display user's keyword search
-	echo "You are searching [";
-	for($i = 0; $i < count($keyword); $i++) {
-		echo "$keyword[$i]";
-		if($i < count($keyword) - 1) {	//Handles multi-word searches
-			echo " ";
-		}
-	}
-	echo "] results...<br /><br />";
+	displayUserSearch($keyword);
 	
 	//Actor MySQL Query
 	getResult(Actor);

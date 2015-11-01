@@ -12,17 +12,14 @@
 	<hr>
 
 <?php
-function getResult($resultType) {
-	//TODO
-	echo "Searching match records in [$resultType] database ...<br />"; 
-	// get the result from using mysql_query 
-	if($resultType == Actor) {
-		echo "ACTOR";
-	} else {	//resultType == Movie
-		echo "MOVIE";
-	}
-
+//Utility function for a new line
+function newLine() {
 	echo "<br />";	//Gets new line for cleaner output
+}
+
+//Prints out the keyword you are searching for
+function getResult($resultType) {
+	echo "Searching match records in [$resultType] database ...<br />"; 
 }
 
 // display user's keyword search
@@ -34,7 +31,8 @@ function displayUserSearch($keyword) {
 			echo " ";
 		}
 	}
-	echo "] results...<br /><br />";
+	echo "] results...<br />";
+	newLine();
 }
 
 // get input
@@ -56,7 +54,7 @@ if ($_GET["keyword"]){
 	mysql_select_db("CS143", $db_connection);
 
 	displayUserSearch($keyword);
-	
+
 	//Actor MySQL Query
 	getResult(Actor);
 
@@ -78,9 +76,10 @@ if ($_GET["keyword"]){
     	print "Actor: $first $last($dob)<br />";
 	}
 
-	 getResult(Movie);
+	newLine();
 
 	//Movie MySQL Query
+	getResult(Movie);
 
 	// get the result from using mysql_query 
 	$movie_query = "SELECT title, year FROM Movie WHERE title LIKE '%{$keyword[0]}%'";

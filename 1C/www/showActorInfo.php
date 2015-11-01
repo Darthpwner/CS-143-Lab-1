@@ -50,6 +50,10 @@
     		//Print variables
     		printVariables($name, $sex, $dob, $dod);
 
+    		//Assign roles variables
+    		$roles_query = "SELECT MA.role, M.title, M.year, M.id FROM MovieActor MA, Movie M WHERE MA.aid = $input AND 
+    						MA.mid = M.id ORDER BY M.year DESC";
+
     		//Print roles
     		printRoles();
 		?>

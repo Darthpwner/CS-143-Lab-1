@@ -55,19 +55,14 @@ if ($_GET["keyword"]){
 	//Actor MySQL Query
 	getResult(Actor);
 
+	echo "<br />";
+
 	// get the result from using mysql_query 
-	$actor_query = "SELECT first, last FROM Actor WHERE last LIKE ";
+	$actor_query = "SELECT first, last FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
 	
-	if(count($keyword) > 1) {	//Handle multi-word searches for actor
-		for($i = 0; $i < count($keyword); $i++) {
-			$actor_query .= "'{$keyword[$i]}'";
-			if($i < count($keyword) - 1) {
-				$actor_query .= " AND ";
-			} 
-		}	
-	} else {	//Handles single word searches (Note: This is a substring!)
-		$actor_query .= "'%{$keyword[0]}%'";
-	}
+	for($i = 1; $i < count($keyword); $i++) {	//Handles multi-word searches for actor
+		$actor_query .= " AND (first LIKE '%{$keyword[i]}%' OR last LIKE '%{$keyword[i]}%')";
+	}																	  
 
 	echo $actor_query;
 

@@ -4,6 +4,7 @@
 	</head>
 	<body>
 		<?php
+			//After user clicks, get information from the link!
 			$title = "";
 			$year = "";
 			$rating = "";

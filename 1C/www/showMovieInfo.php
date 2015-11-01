@@ -17,7 +17,7 @@
 			echo "$rating<br />";
 			echo "$company<br />";
 
-			// include 'search.php';
+			include 'search.php';
 		?>
 	</body>
 </html>

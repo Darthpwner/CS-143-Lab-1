@@ -29,7 +29,7 @@
 			$row = mysql_fetch_row($result);
     		$title .= "$row[0]($row[1])";
     		$producer = $row[2];
-    		$rating= $row[3];
+    		$rating = $row[3];
     		
     		//Print variables
     		printVariables($title, $producer, $rating);

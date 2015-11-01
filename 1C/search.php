@@ -58,7 +58,7 @@ if ($_GET["keyword"]){
 	echo "<br />";
 
 	// get the result from using mysql_query 
-	$actor_query = "SELECT first, last FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
+	$actor_query = "SELECT first, last, dob FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
 	
 	for($i = 1; $i < count($keyword); $i++) {	//Handles multi-word searches for actor
 		$actor_query .= " AND (first LIKE '%{$keyword[$i]}%' OR last LIKE '%{$keyword[$i]}%')";
@@ -108,7 +108,7 @@ if ($_GET["keyword"]){
 	//Movie MySQL Query
 
 	// get the result from using mysql_query 
-	$movie_query = "SELECT title FROM Movie WHERE title LIKE '%{$keyword[0]}%'";
+	$movie_query = "SELECT title, year FROM Movie WHERE title LIKE '%{$keyword[0]}%'";
 	
 	for($i = 1; $i < count($keyword); $i++) {	//Handle multi-word searches for movie
 		$movie_query .= " AND title LIKE '%{$keyword[$i]}%'";

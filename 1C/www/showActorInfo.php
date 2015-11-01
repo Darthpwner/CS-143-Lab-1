@@ -6,6 +6,9 @@
 		<?php
 			include 'search.php';
 
+			$input = $_GET["actor"];   // WHAT VALUE DO I have?
+			echo "$input<br />";
+
 			$actor_query = "SELECT first, last, dob FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
 
 			//Assign variables

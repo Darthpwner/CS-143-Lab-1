@@ -6,6 +6,9 @@
 		<?php
 			include 'search.php';
 
+			$input = $_GET["movie"];   // WHAT VALUE DO I have?
+			echo "$input<br />";
+
 			$movie_query = "SELECT title, producer, rating, year FROM Movie WHERE title LIKE '%{$keyword[0]}%'";
 
 			//After user clicks, get information from the link!

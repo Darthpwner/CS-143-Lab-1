@@ -67,44 +67,53 @@ if ($_GET["keyword"]){
 
 	$result = mysql_query($actor_query, $db_connection);
 
-	// check that the query is valid
-	if (!$result){
-		$error_msg = mysql_error();
-		print "The query could not be performed: $error_msg <br/>";
-		exit(1);
+	//PERFECT FORMAT MOTHER FUCKEKR!
+	while($row = mysql_fetch_row($result)) {
+    	$sid = $row[0];
+    	$name = $row[1];
+    	$email = $row[2];
+    	print "$sid, $name, $email<br />";
 	}
 
-	// get the results and place into tables to be displayed later
-	$k = 3;	//Start at 3 to get first valid tuple
-	echo '<table border=1 cellspacing=1 cellpadding=2><tr>';
 
-	while ($k < mysql_num_fields($result)){
-		$field = mysql_fetch_field($result, $k);
-		echo '<td><b>' . $field->name . '</b></td>';
-		$k = $k + 1;
-	}
-	echo '<tr>';
+	// // check that the query is valid
+	// if (!$result){
+	// 	$error_msg = mysql_error();
+	// 	print "The query could not be performed: $error_msg <br/>";
+	// 	exit(1);
+	// }
 
-    $i = 0;
-	// loop through a row of the result
-	while ($row = mysql_fetch_row($result)){
-		// for each element of the row, we want to display it
-		for ($i = 0; $i < $k; $i++){
-			if ($row[$i] == NULL){
-				echo '<td> N/A </td>';
-			}
-			else {
-				echo '<td>' . $row[$i] . '</td>';
-			}
-		}
-		echo '</td><tr>';
-	}
-	// close tr and table tag
-	echo '</tr></table>';
+	// // get the results and place into tables to be displayed later
+	// $k = 3;	//Start at 3 to get first valid tuple
+	// echo '<table border=1 cellspacing=1 cellpadding=2><tr>';
 
-	getResult(Movie);
+	// while ($k < mysql_num_fields($result)){
+	// 	$field = mysql_fetch_field($result, $k);
+	// 	echo '<td><b>' . $field->name . '</b></td>';
+	// 	$k = $k + 1;
+	// }
+	// echo '<tr>';
 
-	echo "<br />";
+ //    $i = 0;
+	// // loop through a row of the result
+	// while ($row = mysql_fetch_row($result)){
+	// 	// for each element of the row, we want to display it
+	// 	for ($i = 0; $i < $k; $i++){
+	// 		if ($row[$i] == NULL){
+	// 			echo '<td> N/A </td>';
+	// 		}
+	// 		else {
+	// 			echo '<td>' . $row[$i] . '</td>';
+	// 		}
+	// 	}
+	// 	echo '</td><tr>';
+	// }
+	// // close tr and table tag
+	// echo '</tr></table>';
+
+	// getResult(Movie);
+
+	// echo "<br />";
 
 	//Movie MySQL Query
 

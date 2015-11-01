@@ -74,7 +74,8 @@ if ($_GET["keyword"]){
     	$first = $row[0];
     	$last = $row[1];
     	$dob = $row[2];
-    	print "Actor: <a href=showActorInfo.php?id=$result[3]/>$first $last($dob)</a><br />";
+    	$id = $row[3];
+    	print "Actor: <a href=showActorInfo.php?id=$id/>$first $last($dob)</a><br />";
 	}
 
 	newLine();
@@ -97,7 +98,8 @@ if ($_GET["keyword"]){
 	while($row = mysql_fetch_row($result)) {
     	$title = $row[0];
     	$year = $row[1];
-    	print "Movie: <a href=showMovieInfo.php?id=$result[2]/>$title($year)</a><br />";
+    	$id = $row[2];
+    	print "Movie: <a href=showMovieInfo.php?id=$id/>$title($year)</a><br />";
 	}
 
 	// close the database

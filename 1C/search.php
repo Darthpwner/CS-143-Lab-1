@@ -64,7 +64,7 @@ if ($_GET["keyword"]){
 		$actor_query .= " AND (first LIKE '%{$keyword[$i]}%' OR last LIKE '%{$keyword[$i]}%')";
 	}																	  
 
-	echo $actor_query;
+	echo $actor_query;	//Testing Purpose
 
 	$result = mysql_query($actor_query, $db_connection);
 
@@ -108,20 +108,13 @@ if ($_GET["keyword"]){
 	//Movie MySQL Query
 
 	// get the result from using mysql_query 
-	$movie_query = "SELECT title FROM Movie WHERE title LIKE ";
+	$movie_query = "SELECT title FROM Movie WHERE title LIKE '%{$keyword[0]}%'";
 	
-	if(count($keyword) > 1) {
-			for($i = 0; $i < count($keyword); $i++) {	//Handle multi-word searches for movie
-			$movie_query .= "'{$keyword[$i]}'";
-			if($i < count($keyword) - 1) {
-				$movie_query .= " AND ";
-			} 
-		}
-	} else {	//Handles single word searches (Note: This is a substring!)
-		$movie_query .= "'%{$keyword[0]}%'";
+	for($i = 1; $i < count($keyword); $i++) {	//Handle multi-word searches for movie
+		$movie_query .= " AND title LIKE '%{$keyword[$i]}%'";
 	}
 
-	echo $movie_query;
+	echo $movie_query;	//Testing Purpose
 
 	$result = mysql_query("$movie_query", $db_connection);
 

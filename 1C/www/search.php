@@ -59,7 +59,7 @@ if ($_GET["keyword"]){
 	getResult(Actor);
 
 	// get the result from using mysql_query 
-	$actor_query = "SELECT first, last, dob FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
+	$actor_query = "SELECT first, last, dob, id FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
 	
 	for($i = 1; $i < count($keyword); $i++) {	//Handles multi-word searches for actor
 		$actor_query .= " AND (first LIKE '%{$keyword[$i]}%' OR last LIKE '%{$keyword[$i]}%')";
@@ -68,12 +68,13 @@ if ($_GET["keyword"]){
 	//echo $actor_query;	//Testing Purpose
 
 	$result = mysql_query($actor_query, $db_connection);
-
+	
 	while($row = mysql_fetch_row($result)) {
     	$first = $row[0];
     	$last = $row[1];
     	$dob = $row[2];
-    	print "Actor: <a href=http://oak.cs.ucla.edu/cs143//>$first $last($dob)</a><br />";
+    	$id = $row[3];	//Used to pass in aid to the showActorInfo.php file
+    	print "Actor: <a href=showActorInfo.php?aid=$id>$first $last($dob)</a><br />";
 	}
 
 	newLine();
@@ -82,7 +83,7 @@ if ($_GET["keyword"]){
 	getResult(Movie);
 
 	// get the result from using mysql_query 
-	$movie_query = "SELECT title, year FROM Movie WHERE title LIKE '%{$keyword[0]}%'";
+	$movie_query = "SELECT title, year, id FROM Movie WHERE title LIKE '%{$keyword[0]}%'";
 	
 	for($i = 1; $i < count($keyword); $i++) {	//Handle multi-word searches for movie
 		$movie_query .= " AND title LIKE '%{$keyword[$i]}%'";
@@ -91,11 +92,13 @@ if ($_GET["keyword"]){
 	//echo $movie_query;	//Testing Purpose
 
 	$result = mysql_query("$movie_query", $db_connection);
+	echo $result[3];
 
 	while($row = mysql_fetch_row($result)) {
     	$title = $row[0];
     	$year = $row[1];
-    	print "Movie: <a href=http://oak.cs.ucla.edu/cs143//>$title($year)</a><br />";
+    	$id = $row[2];	//Used to pass in mid to the showMovieInfo.php file
+    	print "Movie: <a href=showMovieInfo.php?mid=$id>$title($year)</a><br />";
 	}
 
 	// close the database

@@ -13,10 +13,16 @@
     			echo "Date of Death: ";
     			//Print variables
 				if($dod != "") {
-					echo "$row[4]";
+					echo "$row[4]<br />";
 				} else {
 					echo "Still Alive<br />";
 				}
+
+				echo "<br/>";
+			}
+
+			function printRoles() {
+				echo "<b>Roles</b><br/>";
 			}
 
 			include 'search.php';
@@ -43,6 +49,9 @@
 
     		//Print variables
     		printVariables($name, $sex, $dob, $dod);
+
+    		//Print roles
+    		printRoles();
 		?>
 	</body>
 </html>

@@ -8,6 +8,12 @@
 				echo "<b>Movie Information</b><br/>";
 				echo "Title: $title<br />";
     			echo "MPAA Rating: $rating<br />";
+
+    			echo "<br/>";
+			}
+
+			function printCast() {
+				echo "<b>Cast</b><br/>";
 			}
 
 			include 'search.php';
@@ -33,6 +39,9 @@
     		
     		//Print variables
     		printVariables($title, $producer, $rating);
+
+    		//Print cast
+    		printCast();
 		?>
 	</body>
 </html>

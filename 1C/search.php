@@ -21,6 +21,8 @@ function getResult($resultType) {
 	} else {	//resultType == Movie
 		echo "MOVIE";
 	}
+
+	echo "<br />";	//Gets new line for cleaner output
 }
 
 // display user's keyword search
@@ -58,8 +60,6 @@ if ($_GET["keyword"]){
 	//Actor MySQL Query
 	getResult(Actor);
 
-	echo "<br />";
-
 	// get the result from using mysql_query 
 	$actor_query = "SELECT first, last, dob FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
 	
@@ -79,8 +79,6 @@ if ($_GET["keyword"]){
 	}
 
 	 getResult(Movie);
-
-	 echo "<br />";
 
 	//Movie MySQL Query
 

@@ -58,16 +58,16 @@ if ($_GET["keyword"]){
 	// get the result from using mysql_query 
 	$actor_query = "SELECT first, last FROM Actor WHERE last LIKE ";
 	
-	// if(count($keyword) > 1) {	//Handle multi-word searches for actor
+	if(count($keyword) > 1) {	//Handle multi-word searches for actor
 		for($i = 0; $i < count($keyword); $i++) {
 			$actor_query .= "'{$keyword[$i]}'";
 			if($i < count($keyword) - 1) {
 				$actor_query .= " AND ";
 			} 
 		}	
-	// } else {
-	// 	$actor_query .= "'%{$keyword[$i]}%'";
-	// }
+	} else {	//Handles single word searches (Note: This is a substring!)
+		$actor_query .= "'%{$keyword[0]}%'";
+	}
 
 	echo $actor_query;
 

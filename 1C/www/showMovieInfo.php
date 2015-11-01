@@ -4,6 +4,8 @@
 	</head>
 	<body>
 		<?php
+			include 'search.php';
+
 			$movie_query = "SELECT title, producer, rating, year FROM Movie WHERE title LIKE '%{$keyword[0]}%'";
 
 			//After user clicks, get information from the link!
@@ -17,7 +19,7 @@
 			echo "$rating<br />";
 			echo "$company<br />";
 
-			include 'search.php';
+			
 		?>
 	</body>
 </html>

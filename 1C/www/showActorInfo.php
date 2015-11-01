@@ -4,17 +4,33 @@
 	</head>
 	<body>
 		<?php
+			include 'search.php';
+
 			$actor_query = "SELECT first, last, dob FROM Actor WHERE (first LIKE '%{$keyword[0]}%' OR last LIKE '%{$keyword[0]}%')";
 
-			$name = "Matthew Lin";	//Concatenate first and last 
-			$sex = "Male";
-			$dob = "1995-03-26";
-			$dod = "NULL";
+			//Assign variables
+			// $row = mysql_fetch_row($actor_query)
+   //  		$name = ".$row[0]." ".$row[1].";
+   //  		$sex = $row[2];
+   //  		$dob = $row[3];
+   //  		$dod = $row[4];
 
-			echo "$name<br />";
-			echo "$sex<br />";
-			echo "$dob<br />";
-			echo "$dod<br />";
+   //  		echo "Name: $name<br />";
+   //  		echo "Sex: $sex<br />";
+   //  		echo "Date of Birth: $dob<br />";
+
+   //  		echo "Date of Death: ";
+   //  		//Print variables
+			// if($dod != "") {
+			// 	echo "$row[4]";
+			// } else {
+			// 	echo "Still Alive<br />";
+			// }
+
+			// echo "$name<br />";
+			// echo "$sex<br />";
+			// echo "$dob<br />";
+			// echo "$dod<br />";
 
 			include 'search.php';
 		?>

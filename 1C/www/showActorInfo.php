@@ -21,8 +21,14 @@
 				echo "<br/>";
 			}
 
-			function printRoles() {
+			function printRoles($role, $title, $year) {
 				echo "<b>Roles</b><br/>";
+				while($row = mysql_fetch_row($result)) {
+    				$title = $row[0];
+    				$year = $row[1];
+    				$id = $row[2];	//Used to pass in mid to the showMovieInfo.php file
+	    			print "Movie: <a href=showMovieInfo.php?mid=$id>$title($year)</a><br />";
+				}
 			}
 
 			include 'search.php';
@@ -51,11 +57,20 @@
     		printVariables($name, $sex, $dob, $dod);
 
     		//Assign roles variables
-    		$roles_query = "SELECT MA.role, M.title, M.year, M.id FROM MovieActor MA, Movie M WHERE MA.aid = $input AND 
+    		$roles_query = "SELECT MA.role, M.title, M.year, FROM MovieActor MA, Movie M WHERE MA.aid = $input AND 
     						MA.mid = M.id ORDER BY M.year DESC";
 
+    		// result2 = mysql_query($roles_query, $db_connection);
+
     		//Print roles
-    		printRoles();
+    // 		printRoles($role, $title, $year);
+
+ 			// while($row = mysql_fetch_row($result)) {
+    // 			$role = $row[0];
+    // 			$title = $row[1];
+    // 			$year = $row[2];
+    // 			print "'$role' in $title($year)<br />";
+    // 		}
 		?>
 	</body>
 </html>

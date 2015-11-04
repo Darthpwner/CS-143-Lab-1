@@ -2,6 +2,7 @@
 	<head>
 		<title>Project 1C: Show Actor Information</title>
 	</head>
+
 	<body>
 		<?php
 			function printVariables($name, $sex, $dob, $dod) {

@@ -67,7 +67,6 @@
 
     		while($row = mysql_fetch_row($result4)) {
 		   		//Assign variables
-    			$row = mysql_fetch_row($result4);
     			$name .= "$row[0] $row[1]";
     			$role = $row[2];
 

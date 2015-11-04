@@ -7,6 +7,7 @@
 			function printVariables($title, $producer, $rating) {
 				echo "<b>Movie Information</b><br/>";
 				echo "Title: $title<br />";
+				echo "Producer: $producer<br />";
     			echo "MPAA Rating: $rating<br />";
     			echo "<br/>";
 			}

@@ -65,6 +65,9 @@
 
     		$result4 = mysql_query($cast_query, $db_connection);
 
+    		//Print cast
+    		printCast();
+
     		while($row = mysql_fetch_row($result4)) {
 		   		//Assign variables
     			$name = "$row[0] $row[1]";
@@ -72,9 +75,6 @@
 
     			print "$name as $role<br />";
     		}		
-
-    		//Print cast
-    		printCast();
 
     		echo "<br/>";
 

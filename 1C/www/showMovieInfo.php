@@ -4,11 +4,12 @@
 	</head>
 	<body>
 		<?php
-			function printVariables($title, $producer, $rating) {
+			function printVariables($title, $producer, $rating, $director) {
 				echo "<b>Movie Information</b><br/>";
 				echo "Title: $title<br />";
 				echo "Producer: $producer<br />";
     			echo "MPAA Rating: $rating<br />";
+    			echo "Director: $director<br/>";
     			echo "<br/>";
 			}
 
@@ -40,8 +41,16 @@
     		$producer = $row[2];
     		$rating = $row[3];
     		
-    		//Print variables
-    		printVariables($title, $producer, $rating);
+    		$director_query = "SELECT D.first, D.last FROM Director D, MovieDirector MD WHERE MD.did = D.id AND MD.mid = $input";
+
+    		$result2 = mysql_query($director_query, $db_connection);
+
+    		//Assign variables
+    		$row = mysql_fetch_row($result2);
+    		$directorName .= "$row[0] $row[1]";
+   
+   			//Print variables
+    		printVariables($title, $producer, $rating, $directorName);
 
     		//Print cast
     		printCast();

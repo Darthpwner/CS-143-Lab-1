@@ -69,7 +69,7 @@
     			$role = $row2[0];
     			$title = $row2[1];
     			$year = $row2[2];
-    			print "$role in $title($year)<br />";
+    			print "'$role' in $title($year)<br />";
     		}			
 
     		//printRoles($role, $title, $year);

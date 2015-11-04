@@ -8,7 +8,7 @@
 			<br/>
 			<a href = "addMovieInfo.php"> Add Movie Info </a>
 			<br/>
-			<a href = "addMovieComment,php"> Add Movie Comment </a>
+			<a href = "addMovieComment.php"> Add Movie Comment </a>
 			<br/>
 			<a href = "addMovieActor.php"> Add Movie Actor </a>
 			<br/>

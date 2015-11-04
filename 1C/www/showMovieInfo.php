@@ -7,7 +7,17 @@
 			function printVariables($title, $producer, $rating) {
 				echo "<b>Movie Information</b><br/>";
 				echo "Title: $title<br />";
+				echo "Producer: $producer<br />";
     			echo "MPAA Rating: $rating<br />";
+    			echo "<br/>";
+			}
+
+			function printCast() {
+				echo "<b>Cast</b><br/>";
+			}
+
+			function printReviews() {
+				echo "<b>Reviews</b><br/>";
 			}
 
 			include 'search.php';
@@ -18,8 +28,7 @@
 			//choose database to use
 			mysql_select_db("CS143", $db_connection);
 
-			$input = $_GET["mid"];   // WHAT VALUE DO I have?
-			//echo "$input<br />";
+			$input = $_GET["mid"];   
 
 			$movie_query = "SELECT title, year, company, rating FROM Movie WHERE id=$input";
 
@@ -33,6 +42,14 @@
     		
     		//Print variables
     		printVariables($title, $producer, $rating);
+
+    		//Print cast
+    		printCast();
+
+    		echo "<br/>";
+
+    		//Print reviews
+    		printReviews();
 		?>
 	</body>
 </html>

@@ -58,13 +58,12 @@
      		//Free up the query results
 			mysql_free_result($result);
 
-			//FUCKED UP BELOW!
-
-    		//Assign roles variables
     		$roles_query = "SELECT MA.role, M.title, M.year FROM MovieActor MA, Movie M WHERE MA.aid = $input AND 
     						MA.mid = M.id ORDER BY M.year DESC";
 
     		$result2 = mysql_query($roles_query, $db_connection);
+
+    		echo "<b>Roles </b><br/>";
 
  			while($row2 = mysql_fetch_row($result2)) {
     			$role = $row2[0];
@@ -73,7 +72,7 @@
     			print "$role in $title($year)<br />";
     		}			
 
-    		printRoles($role, $title, $year);
+    		//printRoles($role, $title, $year);
 
     		//Free up the query results
 			mysql_free_result($result2);

@@ -39,9 +39,8 @@
 			//choose database to use
 			mysql_select_db("CS143", $db_connection);
 
-			$input = $_GET["aid"];   // WHAT VALUE DO I have?
-			//echo "$input<br />";
-
+			$input = $_GET["aid"]; 
+			
 			$actor_query = "SELECT first, last, sex, dob FROM Actor WHERE id=$input";
 
 			$result = mysql_query($actor_query, $db_connection);
@@ -56,24 +55,45 @@
     		//Print variables
     		printVariables($name, $sex, $dob, $dod);
 
+     		//Free up the query results
+			mysql_free_result($result);
+
+			//FUCKED UP BELOW!
+
     		//Assign roles variables
-    		$roles_query = "SELECT MA.role, M.title, M.year, FROM MovieActor MA, Movie M WHERE MA.aid = $input AND 
+    		$roles_query = "SELECT MA.role, M.title, M.year FROM MovieActor MA, Movie M WHERE MA.aid = $input AND 
     						MA.mid = M.id ORDER BY M.year DESC";
 
     		$result2 = mysql_query($roles_query, $db_connection);
 
-    		//Print roles
+    		$row2 = mysql_fetch_row($result2);
+    		echo "BITCH";
+    		echo $row2[0];
+ 		    echo $row2[1];
+ 		    echo $row2[2];
+ 		    echo $row2[3];
+
+
+    		// $role = $row2[0];
+    		// echo $role;
+    		// $title = $row2[1];
+    		// echo $title;
+    		// $year = $row2[2];
+    		// echo $year;
+ 			// while($row2 = mysql_fetch_row($result2)) {
+    // 			$role = $row2[0];
+    // 			echo $role;
+    // 			$title = $row2[1];
+    // 			echo $title;
+    // 			$year = $row2[2];
+    // 			echo $year;
+    // 			print "$role in $title($year)<br />";
+    // 		}			
+
     		printRoles($role, $title, $year);
 
- 			while($row = mysql_fetch_row($result2)) {
-    			$role = $row[0];
-    			echo $role;
-    			$title = $row[1];
-    			echo $title;
-    			$year = $row[2];
-    			echo $year;
-    			print "'$role' in $title($year)<br />";
-    		}
+    		//Free up the query results
+			mysql_free_result($result2);
 		?>
 	</body>
 </html>

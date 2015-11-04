@@ -4,12 +4,13 @@
 	</head>
 	<body>
 		<?php
-			function printVariables($title, $producer, $rating, $director) {
+			function printVariables($title, $producer, $rating, $director, $genre) {
 				echo "<b>Movie Information</b><br/>";
 				echo "Title: $title<br />";
 				echo "Producer: $producer<br />";
     			echo "MPAA Rating: $rating<br />";
     			echo "Director: $director<br/>";
+    			echo "Genre: $genre<br/>";
     			echo "<br/>";
 			}
 
@@ -48,9 +49,17 @@
     		//Assign variables
     		$row = mysql_fetch_row($result2);
     		$directorName .= "$row[0] $row[1]";
+
+    		$genre_query = "SELECT genre FROM MovieGenre MG WHERE MG.mid = $input";
+
+    		$result3 = mysql_query($genre_query, $db_connection);
+
+    		//Assign variables
+    		$row = mysql_fetch_row($result3);
+    		$genre = $row[0];
    
    			//Print variables
-    		printVariables($title, $producer, $rating, $directorName);
+    		printVariables($title, $producer, $rating, $directorName, $genre);
 
     		//Print cast
     		printCast();

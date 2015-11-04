@@ -30,7 +30,7 @@
 	    			print "Movie: <a href=showMovieInfo.php?mid=$id>$title($year)</a><br />";
 				}
 			}
-
+			
 			include 'search.php';
 
 			//establish connection with the MySQL database

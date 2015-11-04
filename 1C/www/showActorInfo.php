@@ -66,29 +66,12 @@
 
     		$result2 = mysql_query($roles_query, $db_connection);
 
-    		$row2 = mysql_fetch_row($result2);
-    		echo "BITCH";
-    		echo $row2[0];
- 		    echo $row2[1];
- 		    echo $row2[2];
- 		    echo $row2[3];
-
-
-    		// $role = $row2[0];
-    		// echo $role;
-    		// $title = $row2[1];
-    		// echo $title;
-    		// $year = $row2[2];
-    		// echo $year;
- 			// while($row2 = mysql_fetch_row($result2)) {
-    // 			$role = $row2[0];
-    // 			echo $role;
-    // 			$title = $row2[1];
-    // 			echo $title;
-    // 			$year = $row2[2];
-    // 			echo $year;
-    // 			print "$role in $title($year)<br />";
-    // 		}			
+ 			while($row2 = mysql_fetch_row($result2)) {
+    			$role = $row2[0];
+    			$title = $row2[1];
+    			$year = $row2[2];
+    			print "$role in $title($year)<br />";
+    		}			
 
     		printRoles($role, $title, $year);
 

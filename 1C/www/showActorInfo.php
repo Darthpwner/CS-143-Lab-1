@@ -38,7 +38,7 @@
 			$db_connection = mysql_connect("localhost", "cs143", "");
 		
 			//choose database to use
-			mysql_select_db("CS143", $db_connection);
+			mysql_select_db("TEST", $db_connection);
 
 			$input = $_GET["aid"]; 
 			

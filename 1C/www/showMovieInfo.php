@@ -92,7 +92,7 @@
     		if($average_rating == 0) {
     			print "Average rating: No reviews have been added.";
     		} else {
-    			print "Average rating: $average_rating/5 by $number_of_ratings review(s).<br/></br>";
+    			print "Average rating: $average_rating/5 stars by $number_of_ratings review(s).<br/></br>";
     		}
 
     		$comments_query = "SELECT time, name, rating, comment FROM Review WHERE mid = $input ORDER BY time DESC";
@@ -105,7 +105,7 @@
     			$rating = $row[2];
     			$comment = $row[3];
 
-    			print "$time $name $rating </br>$comment <br/></br>";
+    			print "$time by $name<br/>$rating out of 5 stars</br>$comment <br/></br>";
     		}
 		?>
 	</body>

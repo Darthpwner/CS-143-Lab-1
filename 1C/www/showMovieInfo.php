@@ -78,8 +78,22 @@
 
     		echo "<br/>";
 
+    		$reviews_query = "SELECT AVG(rating), COUNT(rating) FROM Review R WHERE mid = $input";
+    		
+    		$result5 = mysql_query($reviews_query, $db_connection);
+
     		//Print reviews
     		printReviews();
+
+    		$row = mysql_fetch_row($result5);
+    		$average_rating = $row[0];
+    		$number_of_ratings = $row[1];
+
+    		if($average_rating == 0) {
+    			print "Average rating: No reviews have been added.";
+    		} else {
+    			print "Average rating: $average_rating/5 by $number_of_ratings review(s).";
+    		}
 		?>
 	</body>
 </html>

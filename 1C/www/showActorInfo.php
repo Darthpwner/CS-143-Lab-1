@@ -49,18 +49,25 @@
      		//Free up the query results
 			mysql_free_result($result);
 
-    		$roles_query = "SELECT MA.role, M.title, M.year FROM MovieActor MA, Movie M WHERE MA.aid = $input AND 
+    		$roles_query = "SELECT MA.role, M.title, M.year, MA.mid FROM MovieActor MA, Movie M WHERE MA.aid = $input AND 
     						MA.mid = M.id ORDER BY M.year DESC";
 
     		$result2 = mysql_query($roles_query, $db_connection);
 
     		echo "<b>Roles </b><br/>";
 
+//
+    		$movie_query = "SELECT MA.mid FROM MovieActor MA, Movie M WHERE MA.mid = M.id";
+
+    		$result3 = mysql_query($movie_query, $db_connection);
+
  			while($row2 = mysql_fetch_row($result2)) {
     			$role = $row2[0];
     			$title = $row2[1];
     			$year = $row2[2];
-    			print "'$role' in $title($year)<br />";
+    			$mid = $row2[3];
+ //   			print "'$role' in $title($year)<br />";
+    			print "'$role' in <a href=showMovieInfo.php?mid=$mid>$title ($year)</a><br />";	//Fix UI issues
     		}			
 
     		//Free up the query results

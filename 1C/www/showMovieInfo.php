@@ -92,7 +92,20 @@
     		if($average_rating == 0) {
     			print "Average rating: No reviews have been added.";
     		} else {
-    			print "Average rating: $average_rating/5 by $number_of_ratings review(s).";
+    			print "Average rating: $average_rating/5 by $number_of_ratings review(s).<br/></br>";
+    		}
+
+    		$comments_query = "SELECT time, name, rating, comment FROM Review WHERE mid = $input ORDER BY time DESC";
+
+    		$result6 = mysql_query($comments_query, $db_connection);
+
+    		while($row = mysql_fetch_row($result6)) {
+    			$time = $row[0];
+    			$name = $row[1];
+    			$rating = $row[2];
+    			$comment = $row[3];
+
+    			print "$time $name $rating </br>$comment <br/></br>";
     		}
 		?>
 	</body>

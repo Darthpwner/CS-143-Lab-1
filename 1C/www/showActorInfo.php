@@ -21,16 +21,6 @@
 
 				echo "<br/>";
 			}
-
-			function printRoles($role, $title, $year) {
-				echo "<b>Roles</b><br/>";
-				while($row = mysql_fetch_row($result)) {
-    				$title = $row[0];
-    				$year = $row[1];
-    				$id = $row[2];	//Used to pass in mid to the showMovieInfo.php file
-	    			print "Movie: <a href=showMovieInfo.php?mid=$id>$title($year)</a><br />";
-				}
-			}
 			
 			include 'search.php';
 
@@ -72,8 +62,6 @@
     			$year = $row2[2];
     			print "'$role' in $title($year)<br />";
     		}			
-
-    		//printRoles($role, $title, $year);
 
     		//Free up the query results
 			mysql_free_result($result2);

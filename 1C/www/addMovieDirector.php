@@ -2,26 +2,48 @@
 	<head>
 		<title>Project 1C: Add an existing director to a movie</title>
 	</head>	
+	<style>
+		ul {
+		    float: left;
+		    width: 100%;
+		    padding: 0;
+		    margin: 0;
+		    list-style-type: none;
+		}
+
+		a {
+		    float: left;
+		    width: 6em;
+		    text-decoration: none;
+		    color: white;
+		    background-color: black;
+		    padding: 0.2em 0.6em;
+		    border-right: 1px solid white;
+		}
+
+		a:hover {
+		    background-color: blue;
+		}
+
+		li {
+		    display: inline;
+		}
+	</style>
 	<table border="0">
 		<tr>
 			<a href = "addActorDirector.php"> Add Actor or Director </a>
-			<br/>
 			<a href = "addMovieInfo.php"> Add Movie Info </a>
-			<br/>
 			<a href = "addMovieComment.php"> Add Movie Comment </a>
-			<br/>
-			<a href = "addMovieActor.php"> Add Movie Actor </a>
-			<br/>
+			<a href = "addMovieActor.php"> Add Movie/Actor </a>
+			<a href = "addMovieDirector.php"> Add Movie/Director </a>
 			<a href = "showActorInfo.php"> Show Actor Info </a>
-			<br/>
 			<a href = "showMovieInfo.php"> Show Movie Info </a>
-			<br/>
-			<a href = "search.php"> Search </a>
-			<br/>
+			<a href = "search.php"> Search With Keyword</a>
 		</tr>
 	</table>
 
 	<body>
+	    <br></br>
 		<h1>CS 143: Project 1C - Add Movie Director</h1>
 		Add an existing director to movie:
 		<br></br>

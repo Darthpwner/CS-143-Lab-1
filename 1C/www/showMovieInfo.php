@@ -61,7 +61,7 @@
    			//Print variables
     		printVariables($title, $producer, $rating, $directorName, $genre);
 
-    		$cast_query = "SELECT A.first, A.last, MA.role FROM MovieActor MA, Actor A WHERE MA.mid = $input AND MA.aid = A.id";
+    		$cast_query = "SELECT A.first, A.last, MA.role, MA.aid FROM MovieActor MA, Actor A WHERE MA.mid = $input AND MA.aid = A.id";
 
     		$result4 = mysql_query($cast_query, $db_connection);
 
@@ -72,8 +72,8 @@
 		   		//Assign variables
     			$name = "$row[0] $row[1]";
     			$role = $row[2];
-
-    			print "$name as $role<br />";
+                $aid = $row[3];
+                print "<a href=showActorInfo.php?aid=$aid>$name</a> as $role<br />";
     		}		
 
     		echo "<br/>";

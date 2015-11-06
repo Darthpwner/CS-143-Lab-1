@@ -56,9 +56,10 @@
 
     		$result2 = mysql_query($roles_query, $db_connection);
 
-    		echo "<b>Roles </b><br/>";
+    		if($input != "") {
+    			echo "<b>Roles </b><br/>";
+    		}
 
-//
     		$movie_query = "SELECT MA.mid FROM MovieActor MA, Movie M WHERE MA.mid = M.id";
 
     		$result3 = mysql_query($movie_query, $db_connection);
@@ -68,8 +69,7 @@
     			$title = $row2[1];
     			$year = $row2[2];
     			$mid = $row2[3];
- //   			print "'$role' in $title($year)<br />";
-    			print "'$role' in <a href=showMovieInfo.php?mid=$mid>$title ($year)</a><br />";	//Fix UI issues
+    			print "'$role' in <a href=showMovieInfo.php?mid=$mid>$title ($year)</a><br />";	
     		}			
 
     		//Free up the query results

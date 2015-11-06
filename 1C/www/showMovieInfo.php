@@ -59,15 +59,19 @@
     		$genre = $row[0];
    
    			//Print variables
-    		printVariables($title, $producer, $rating, $directorName, $genre);
-
+            if($input != "") {
+                printVariables($title, $producer, $rating, $directorName, $genre);    
+            }
+    		
     		$cast_query = "SELECT A.first, A.last, MA.role, MA.aid FROM MovieActor MA, Actor A WHERE MA.mid = $input AND MA.aid = A.id";
 
     		$result4 = mysql_query($cast_query, $db_connection);
 
     		//Print cast
-    		printCast();
-
+            if($input != "") {
+                printCast();    
+            }
+    		
     		while($row = mysql_fetch_row($result4)) {
 		   		//Assign variables
     			$name = "$row[0] $row[1]";
@@ -83,17 +87,21 @@
     		$result5 = mysql_query($reviews_query, $db_connection);
 
     		//Print reviews
-    		printReviews();
-
+            if($input != "") {
+                printReviews();    
+            }
+    		
     		$row = mysql_fetch_row($result5);
     		$average_rating = $row[0];
     		$number_of_ratings = $row[1];
 
-    		if($average_rating == 0) {
-    			print "Average rating: No reviews have been added.";
-    		} else {
-    			print "Average rating: $average_rating/5 stars by $number_of_ratings review(s).<br/></br>";
-    		}
+            if($input != "") {
+                if($average_rating == 0) {
+                    print "Average rating: No reviews have been added.";
+                } else {
+                    print "Average rating: $average_rating/5 stars by $number_of_ratings review(s).<br/></br>";
+                }
+            }
 
     		$comments_query = "SELECT time, name, rating, comment FROM Review WHERE mid = $input ORDER BY time DESC";
 

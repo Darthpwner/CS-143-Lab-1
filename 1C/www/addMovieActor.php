@@ -31,13 +31,13 @@
 		<h1>CS 143: Project 1C - Add Movie/Actor Relation</h1>
 		Add new actor in a movie:
 		<br></br>
-		<form action="./addAMovieActor.php" method="GET">
+		<form action="./addMovieActor.php" method="GET">
 			<?php 
 				// create db connection
 				$db = mysql_connect("localhost", "cs143", "");
 				if(!$db) {
 					$errmsg = mysql_error($db);
-					print "Connection SHIT failed: $errmsg <br />";
+					print "Connection failed: $errmsg <br />";
 					exit(1);
 				}					
 				mysql_select_db("CS143", $db);

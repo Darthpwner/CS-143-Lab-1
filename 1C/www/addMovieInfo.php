@@ -104,11 +104,10 @@
 					$mid_result = mysql_query($mid_query, $db);
 					$mid_row = mysql_fetch_row($mid_result);
 					$mid = $mid_row[0]+1;
-					echo $mid;
-
+					
 					// query to add into database
 					$add_movie_query = "INSERT INTO Movie VALUES ($mid, '$title', '$year', '$mpaa', '$company')";
-					echo $add_movie_query;
+					
 					// check if sucessful add
 					if (mysql_query($add_movie_query, $db)) {
 						mysql_query($add_movie_query, $db);

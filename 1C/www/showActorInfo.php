@@ -44,8 +44,10 @@
     		$dod = $row[4];
 
     		//Print variables
-    		printVariables($name, $sex, $dob, $dod);
-
+    		if($input != "") {
+    			printVariables($name, $sex, $dob, $dod);	
+    		}
+    		
      		//Free up the query results
 			mysql_free_result($result);
 

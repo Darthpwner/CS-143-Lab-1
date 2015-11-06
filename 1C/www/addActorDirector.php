@@ -151,7 +151,7 @@
 					print "Connection SHIT failed: $errmsg <br />";
 					exit(1);
 				}					
-				mysql_select_db("TEST", $db);
+				mysql_select_db("CS143", $db);
 
 				$firstname = mysql_real_escape_string($tfirst);
 				$lastname = mysql_real_escape_string($tlast);

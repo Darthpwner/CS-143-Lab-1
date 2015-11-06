@@ -76,7 +76,7 @@ if ($_GET["keyword"]){
 	// get input and select database
 	$keyword = explode(' ', $input);	//Keywords can be separated by spaces
 
-	mysql_select_db("TEST", $db_connection);
+	mysql_select_db("CS143", $db_connection);
 
 	displayUserSearch($keyword);
 

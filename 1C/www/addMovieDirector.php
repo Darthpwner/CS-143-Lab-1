@@ -41,7 +41,7 @@
 					print "Connection SHIT failed: $errmsg <br />";
 					exit(1);
 				}					
-				mysql_select_db("TEST", $db);
+				mysql_select_db("CS143", $db);
 
 				// select all movie ids, titles, and years; place as option
 				$movies = mysql_query("SELECT id, title, year FROM Movie ORDER BY title ASC", $db);

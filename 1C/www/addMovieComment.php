@@ -40,7 +40,7 @@
 						print "Connection failed: $errmsg <br />";
 						exit(1);
 					}					
-					mysql_select_db("TEST", $db);
+					mysql_select_db("CS143", $db);
 
 					// select all movie id, titls, and years, and place option into dropdown
 					$movie_row = mysql_query("SELECT id, title, year FROM Movie ORDER BY title ASC", $db) or die(mysql_error());

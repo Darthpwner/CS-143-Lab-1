@@ -97,7 +97,7 @@
 						print "Connection failed: $errmsg <br />";
 						exit(1);
 					} 
-					mysql_select_db("TEST", $db);
+					mysql_select_db("CS143", $db);
 
 					// get the latest mid
 					$mid_query = "SELECT id FROM MaxMovieID"; 

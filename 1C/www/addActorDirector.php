@@ -117,6 +117,7 @@
 			$dodmonth = $_POST["dodmonth"];
 			$dodyear = $_POST["dodyear"]; 
 			$dod = "$dodyear-$dodmonth-$dodday"; 
+	
 			$dod_flag = 0;
 
 			$success = 0;
@@ -124,8 +125,8 @@
 			$addActor = "";
 			$addDirector = "";
 
-			if ($doddday > 0 && $dodmonth > 0 && $dodyear > 0) {
-				$dod_flag = 1; // we want to add the dod, since it was inputted
+			if ($dodday > 0 && $dodmonth > 0 && $dodyear > 0) {
+						$dod_flag = 1; // we want to add the dod, since it was inputted
 			}
 
 			if (str_replace(" ", "", $tfirst) == ""){
@@ -160,7 +161,6 @@
 				$pidsearch = mysql_query($pidquery, $db);
 				$pidfinished = mysql_fetch_row($pidsearch);
 				$pid = $pidfinished[0];
-
 				// add info to Actor Table
 				if ($dod_flag == 0){
 					$addActor = "INSERT INTO Actor VALUES ($pid, '$lastname', '$firstname', '$sex', '$dob', NULL)";
@@ -170,11 +170,12 @@
 				}
 
 				// add info to Director Table
-				if ($dod_flag == 0)
-					$addDirector = "INSERT INTO Director VALUES ($pid, '$lastname', '$firstname', '$sex', '$dob', NULL)";
-				else
-					$addDirector = "INSERT INTO Director VALUES ($pid, '$lastname', '$firstname', '$sex', '$dob', '$dod')";
-
+				if ($dod_flag == 0) {
+					$addDirector = "INSERT INTO Director VALUES ($pid, '$lastname', '$firstname', '$dob', NULL)";
+				}
+				else {
+					$addDirector = "INSERT INTO Director VALUES ($pid, '$lastname', '$firstname', '$dob', '$dod')";
+				}
 				echo "<p>";
 				if ($actor_flag) {
 					if (mysql_query($addActor, $db)){

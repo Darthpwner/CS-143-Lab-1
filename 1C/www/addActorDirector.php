@@ -164,7 +164,6 @@
 				// add info to Actor Table
 				if ($dod_flag == 0){
 					$addActor = "INSERT INTO Actor VALUES ($pid, '$lastname', '$firstname', '$sex', '$dob', NULL)";
-					echo $addActor;
 				}
 				else {
 					$addActor = "INSERT INTO Actor VALUES ($pid, '$lastname', '$firstname', '$sex', '$dob', '$dod')";
@@ -193,7 +192,6 @@
 				}
 				if ($success == 1) {
 					mysql_query("UPDATE MaxPersonID SET id=id+1", $db);
-					echo "entered";
 				}
 				echo "</p>";
 				mysql_close($db);

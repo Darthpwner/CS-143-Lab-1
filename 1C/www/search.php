@@ -28,7 +28,6 @@
 		</tr>
 	</table>
 <body>
-	<br/> <br/>
 	<h1>CS 143: Project 1C - Search using Keyword</h1>
 			By Kang (Frank) Chen & Matthew Lin <br/><br/>
 		<form /*action="."*/ method="GET">

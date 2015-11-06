@@ -11,19 +11,6 @@
 		    list-style-type: none;
 		}
 
-		a {
-		    float: left;
-		    width: 6em;
-		    text-decoration: none;
-		    color: white;
-		    background-color: black;
-		    padding: 0.2em 0.6em;
-		    border-right: 1px solid white;
-		}
-
-		a:hover {
-		    background-color: blue;
-		}
 
 		li {
 		    display: inline;
@@ -31,19 +18,18 @@
 	</style>
 	<table border="0">
 		<tr>
-			<a href = "addActorDirector.php"> Add Actor or Director </a>
-			<a href = "addMovieInfo.php"> Add Movie Info </a>
-			<a href = "addMovieComment.php"> Add Movie Comment </a>
-			<a href = "addMovieActor.php"> Add Movie/Actor </a>
-			<a href = "addMovieDirector.php"> Add Movie/Director </a>
-			<a href = "showActorInfo.php"> Show Actor Info </a>
-			<a href = "showMovieInfo.php"> Show Movie Info </a>
-			<a href = "search.php"> Search With Keyword</a>
+			<a href = "addActorDirector.php"> Add Actor or Director </a> <br />
+			<a href = "addMovieInfo.php"> Add Movie Info </a>	<br />
+			<a href = "addMovieComment.php"> Add Movie Comment </a>	<br />
+			<a href = "addMovieActor.php"> Add Movie/Actor </a>	<br />
+			<a href = "addMovieDirector.php"> Add Movie/Director </a>	<br />
+			<a href = "showActorInfo.php"> Show Actor Info </a>	<br />
+			<a href = "showMovieInfo.php"> Show Movie Info </a>	<br />
+			<a href = "search.php"> Search With Keyword</a>	<br />
 		</tr>
 	</table>
 
 	<body>
-		<br/> <br/>
 		<h1> CS 143: Project 1C - Add Movie</h1>
 		By Kang (Frank) Chen & Matthew Lin <br/>
 
